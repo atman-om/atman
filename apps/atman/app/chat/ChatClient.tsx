@@ -30,13 +30,14 @@ export default function ChatClient() {
     } finally { setBusy(false); }
   }
 
-  return <div className="grid">
+  return <div className="grid chat-grid">
     <div className="card"><h2>Chat</h2>
+      <div className="chat-form">
       <select value={citationMode} onChange={(e) => setCitationMode(e.target.value as any)}><option value="hidden">Hidden citations</option><option value="source">Source mode</option><option value="scholar">Scholar mode</option></select>
       <textarea rows={5} value={question} onChange={(e) => setQuestion(e.target.value)} />
-      <p><button disabled={busy} onClick={send}>{busy ? 'Generating…' : 'Ask Atman'}</button></p>
-      <p>Session: <code>{sessionId || 'new'}</code></p>
+      <p className="chat-actions"><button disabled={busy} onClick={send}>{busy ? 'Generating…' : 'Ask Atman'}</button><span>Session: <code>{sessionId || 'new'}</code></span></p>
+      </div>
     </div>
-    <div className="card"><h2>Conversation</h2>{messages.map((m, i) => <div className="bubble" key={i}><b>{m.role}</b><p>{m.content}</p>{m.citations?.length ? <pre>{JSON.stringify(m.citations, null, 2)}</pre> : null}{m.usage ? <small>{JSON.stringify(m.usage)}</small> : null}</div>)}</div>
+    <div className="card conversation"><h2>Conversation</h2>{messages.length === 0 ? <p className="empty-state">No messages yet.</p> : messages.map((m, i) => <div className="bubble" key={i}><b>{m.role}</b><p>{m.content}</p>{m.citations?.length ? <pre>{JSON.stringify(m.citations, null, 2)}</pre> : null}{m.usage ? <small>{JSON.stringify(m.usage)}</small> : null}</div>)}</div>
   </div>;
 }
