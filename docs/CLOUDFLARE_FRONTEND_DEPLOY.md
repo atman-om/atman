@@ -35,6 +35,8 @@ npm.cmd run deploy:cloudflare
 
 Use a Workers deployment, not a Dockerfile deployment and not a static Pages export.
 
+Recommended settings:
+
 ```text
 Root directory: apps/atman
 Install command: npm ci
@@ -44,7 +46,23 @@ Pre-deploy command: empty
 Build system: npm / Node.js, not Dockerfile
 ```
 
-If the Cloudflare dashboard shows `apps/atman/Dockerfile`, remove that Dockerfile setting. The Dockerfile is only for local `docker compose` development; it starts `next dev` and does not produce a Cloudflare Worker bundle.
+If Cloudflare must stay pointed at the repo root, use these root-level wrapper scripts instead:
+
+```text
+Root directory: empty or /
+Install command: empty
+Build command: npm run cf:build:atman
+Deploy command: npm run cf:deploy:atman
+Pre-deploy command: empty
+```
+
+Do not use raw `npx wrangler deploy` from the repo root. It skips the OpenNext build and fails with:
+
+```text
+Could not detect a directory containing static files
+```
+
+If the dashboard shows `apps/atman/Dockerfile`, remove that Dockerfile setting. The Dockerfile is only for local `docker compose` development; it starts `next dev` and does not produce a Cloudflare Worker bundle.
 
 Set this Cloudflare variable:
 

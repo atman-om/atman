@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "scripts": {
+    "cf:build:atman": "npm --prefix apps/atman ci && npm --prefix apps/atman run cf:build",
+    "cf:deploy:atman": "npm --prefix apps/atman run cf:deploy"
+  }
+}
