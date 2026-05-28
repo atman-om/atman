@@ -1,5 +1,5 @@
 async function runPreview() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/eval/run/hardened`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:8000'}/eval/run/hardened`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ benchmark_name: 'nyayabench_hardened', model_version: 'Atman-Lab-Qwen-14B-v0.7' }),

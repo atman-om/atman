@@ -1,5 +1,5 @@
 async function search() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/source-explorer/search?limit=50`, { cache: 'no-store' });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:8000'}/source-explorer/search?limit=50`, { cache: 'no-store' });
   if (!res.ok) return { sources: [], chunks: [], total: 0 };
   return res.json();
 }

@@ -66,4 +66,4 @@ async def product_readiness(session: AsyncSession = Depends(get_session)) -> Pro
     if works == 0 or passages == 0:
         warnings.append("canonical_corpus_seed_missing")
     checks = {"remote_qwen_mode": settings.qwen_runtime_mode, "users": users, "canonical_works": works, "canonical_passages": passages, "chat_sessions": sessions}
-    return ProductReadinessOut(version="1.0.5", ready_for_demo=len(blockers) == 0, ready_for_public_beta=len(blockers) == 0 and works > 0 and passages > 0, checks=checks, blockers=blockers, warnings=warnings)
+    return ProductReadinessOut(version=settings.product_version, ready_for_demo=len(blockers) == 0, ready_for_public_beta=len(blockers) == 0 and works > 0 and passages > 0, checks=checks, blockers=blockers, warnings=warnings)

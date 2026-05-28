@@ -17,8 +17,8 @@ export default async function HomePage() {
       <aside className="card">
         <h2>Runtime</h2>
         <p>Family: {status?.model_family || 'Qwen'}</p>
-        <p>Mode: {status?.mode || 'deterministic'}</p>
-        <p>Model: {status?.runtime_model || 'Atman-Lab-Qwen-14B-v0.6'}</p>
+        <p>Mode: {status?.mode || 'openai_compatible'}</p>
+        <p>Model: {status?.runtime_model || 'Atman-Lab-Qwen-14B-v1.0'}</p>
         <p>Weights bundled: {status?.weights_bundled ? 'Yes' : 'No'}</p>
       </aside>
       <section className="grid" style={{gridColumn: '1 / -1'}}>

@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </nav>
           {children}
-          <div className="footer">Atman v0.7 · NyayaBench hardened · source explorer enabled</div>
+          <div className="footer">Atman v2.0 · Dharma Knowledge OS · Model Lab enabled</div>
         </main>
       </body>
     </html>

@@ -2,7 +2,7 @@ async function searchSources(q = '') {
   const params = new URLSearchParams();
   if (q) params.set('q', q);
   params.set('limit', '25');
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/public/source-explorer/search?${params}`, { cache: 'no-store' });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:8000'}/public/source-explorer/search?${params}`, { cache: 'no-store' });
   if (!res.ok) return { query: q, total: 0, sources: [], chunks: [], filters: {} };
   return res.json();
 }

@@ -1,5 +1,5 @@
 async function getSource(sourceId: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/public/source-explorer/sources/${sourceId}`, { cache: 'no-store' });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:8000'}/public/source-explorer/sources/${sourceId}`, { cache: 'no-store' });
   if (!res.ok) return null;
   return res.json();
 }
