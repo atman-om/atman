@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman Source Explorer Search Response",
+  "type": "object",
+  "required": [
+    "query",
+    "total",
+    "sources",
+    "chunks",
+    "filters"
+  ],
+  "properties": {
+    "query": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "total": {
+      "type": "integer"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "chunks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "filters": {
+      "type": "object"
+    }
+  }
+}

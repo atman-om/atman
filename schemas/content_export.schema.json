@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtmanContentExportRequest",
+  "type": "object",
+  "properties": {
+    "export_format": {
+      "enum": [
+        "jsonl",
+        "markdown",
+        "csv"
+      ]
+    },
+    "batch_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "review_status": {
+      "enum": [
+        "APPROVED",
+        "REVIEW_PENDING",
+        "NEEDS_REVISION",
+        "REJECTED",
+        "AUTO_BLOCKED"
+      ]
+    }
+  }
+}

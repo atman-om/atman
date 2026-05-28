@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "name",
+    "base_model",
+    "samples"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "base_model": {
+      "type": "string"
+    },
+    "samples": {
+      "type": "array"
+    }
+  }
+}

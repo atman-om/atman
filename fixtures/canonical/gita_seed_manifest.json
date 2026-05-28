@@ -1,0 +1,48 @@
+{
+  "source_policy": {
+    "mode": "seed_demo",
+    "visible_citations_default": "hidden",
+    "internal_provenance_required": true
+  },
+  "works": [
+    {
+      "work_key": "GITA",
+      "title_sa": "भगवद्गीता",
+      "title_hi": "भगवद्गीता",
+      "title_en": "Bhagavad Gita",
+      "category": "ITIHASA_GITA",
+      "tradition_scope": [
+        "sanatana_dharma"
+      ],
+      "authority_level": "PRIMARY",
+      "canonical_status": "CANDIDATE",
+      "metadata": {
+        "seed": true
+      }
+    }
+  ],
+  "passages": [
+    {
+      "work_key": "GITA",
+      "locator": "BG.2.47",
+      "sanskrit_text": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥",
+      "normalized_text": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि",
+      "translation_hi": "तुझे कर्म करने का अधिकार है, फल पर नहीं। फल को कर्म का हेतु मत बना और अकर्म में आसक्ति मत रख।",
+      "chapter": "2",
+      "verse": "47",
+      "confidence": 0.97,
+      "review_status": "CANDIDATE"
+    },
+    {
+      "work_key": "GITA",
+      "locator": "BG.4.7",
+      "sanskrit_text": "यदा यदा हि धर्मस्य ग्लानिर्भवति भारत। अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥",
+      "normalized_text": "यदा यदा हि धर्मस्य ग्लानिर्भवति भारत अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्",
+      "translation_hi": "जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब मैं अपने स्वरूप को प्रकट करता हूँ।",
+      "chapter": "4",
+      "verse": "7",
+      "confidence": 0.95,
+      "review_status": "CANDIDATE"
+    }
+  ]
+}

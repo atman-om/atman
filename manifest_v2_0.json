@@ -1,0 +1,20 @@
+{
+  "name": "ATMAN_PLATFORM_v2_0_DHARMA_KNOWLEDGE_OS_WITH_MODEL_LAB",
+  "version": "2.0.0",
+  "generated_at": "2026-05-28T12:52:49.144455+00:00",
+  "base_artifact": "ATMAN_REPO_v1_0_5_PRODUCTION_CHATBOT_CORPUS_ANALYTICS.zip",
+  "primary_strategy": "remote_qwen_live_product_plus_parallel_model_lab",
+  "new_modules": [
+    "knowledge_os",
+    "learning",
+    "source_correctness",
+    "model_lab"
+  ],
+  "new_apis": [
+    "/os/status",
+    "/learning/*",
+    "/correctness/claims/check",
+    "/model-lab/*"
+  ],
+  "production_rule": "remote_qwen_stays_live_until_fine_tuned_adapter_passes_gates"
+}

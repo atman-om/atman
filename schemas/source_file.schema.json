@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman Source File",
+  "type": "object",
+  "required": ["source_id", "original_filename", "byte_size", "checksum_sha256", "storage_uri", "extraction_status"],
+  "properties": {
+    "source_id": {"type": "string"},
+    "original_filename": {"type": "string"},
+    "content_type": {"type": ["string", "null"]},
+    "byte_size": {"type": "integer", "minimum": 0},
+    "checksum_sha256": {"type": "string", "minLength": 64, "maxLength": 64},
+    "storage_uri": {"type": "string"},
+    "extraction_status": {"enum": ["PENDING", "COMPLETED", "EMPTY", "FAILED"]},
+    "extraction_report": {"type": "object"}
+  }
+}

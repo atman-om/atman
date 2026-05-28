@@ -1,0 +1,3 @@
+import { Nav } from '../../components/Nav';
+import { getJson } from '../../lib/api';
+export default async function Page() { const works = await getJson('/canonical/works'); const sources = await getJson('/public/source-explorer/search?query=&limit=10'); return <main className="shell"><Nav /><h1>ShrutiKosh Library</h1><p>Browse verified works, canonical passages, source explorer records, and internal evidence traces.</p><div className="grid"><div className="card"><h2>Canonical Works</h2><pre>{JSON.stringify(works, null, 2)}</pre></div><div className="card"><h2>Source Explorer</h2><pre>{JSON.stringify(sources, null, 2)}</pre></div></div></main>; }

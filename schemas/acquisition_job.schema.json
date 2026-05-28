@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman Wide Acquisition Job",
+  "type": "object",
+  "required": ["source_uri", "mode"],
+  "properties": {
+    "source_uri": {"type": "string"},
+    "mode": {"enum": ["wide_discovery", "quarantine_import", "canonical_candidate", "manual_bulk_import"]},
+    "discovered_title": {"type": ["string", "null"]},
+    "extracted_text": {"type": ["string", "null"]},
+    "rights_signal": {"type": "string", "default": "UNKNOWN"},
+    "canonical_candidate": {"type": "object"}
+  }
+}

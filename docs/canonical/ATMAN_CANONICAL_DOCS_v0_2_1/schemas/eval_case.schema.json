@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NyayaBenchEvalCase",
+  "type": "object",
+  "required": [
+    "case_id",
+    "benchmark",
+    "question",
+    "required_behavior",
+    "severity"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "benchmark": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "question": {
+      "type": "string"
+    },
+    "gold_locators": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_behavior": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocked_behavior": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "severity": {
+      "enum": [
+        "hard_fail",
+        "soft_fail",
+        "warning"
+      ]
+    }
+  }
+}

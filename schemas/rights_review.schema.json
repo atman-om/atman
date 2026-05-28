@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtmanRightsReview",
+  "type": "object",
+  "required": [
+    "source_id",
+    "rights_status",
+    "reviewer_id",
+    "allowed_usage",
+    "evidence"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string"
+    },
+    "rights_status": {
+      "type": "string"
+    },
+    "reviewer_id": {
+      "type": "string"
+    },
+    "allowed_usage": {
+      "type": "object",
+      "properties": {
+        "store": {
+          "type": "boolean"
+        },
+        "rag": {
+          "type": "boolean"
+        },
+        "train": {
+          "type": "boolean"
+        },
+        "quote": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

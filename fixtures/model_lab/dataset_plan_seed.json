@@ -1,0 +1,10 @@
+{
+  "name": "atman_qwen_seed_parallel_plan",
+  "base_model": "Qwen/Qwen3-14B",
+  "target_sample_count": 1000,
+  "verified_qa": 300,
+  "reviewed_content": 150,
+  "failure_corrections": 60,
+  "adversarial": 80,
+  "include_raw_scraped": false
+}

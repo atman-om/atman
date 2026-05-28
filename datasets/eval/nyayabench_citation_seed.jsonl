@@ -1,0 +1,1 @@
+{"case_id": "NB-CITE-001", "benchmark": "nyayabench_citation", "language": "hi", "question": "BG.18.66 का अर्थ स्रोत सहित बताओ।", "gold_locators": ["BG.18.66"], "required_behavior": ["exact_locator", "no_wrong_citation"], "blocked_behavior": ["cite_bg_2_47_for_18_66"], "severity": "hard_fail"}

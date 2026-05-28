@@ -1,0 +1,40 @@
+openapi: 3.1.0
+info:
+  title: Atman Eval Hardening and Source Explorer API
+  version: 0.7.0
+paths:
+  /eval/run/hardened:
+    post:
+      summary: Run hardened NyayaBench evaluation.
+      tags: [eval]
+      responses:
+        '200': {description: Hardened eval run summary}
+  /eval/citation/check:
+    post:
+      summary: Check citation alignment for an answer.
+      tags: [eval]
+      responses:
+        '200': {description: Citation alignment report}
+  /eval/fake-shloka/check:
+    post:
+      summary: Detect Sanskrit/shloka invention risk.
+      tags: [eval]
+      responses:
+        '200': {description: Fake-shloka risk report}
+  /public/source-explorer/search:
+    get:
+      summary: Public search over approved source metadata and chunks.
+      tags: [source-explorer]
+      responses:
+        '200': {description: Public source explorer results}
+  /public/source-explorer/sources/{source_id}:
+    get:
+      summary: Public source detail with chunks and rights explanation.
+      tags: [source-explorer]
+      parameters:
+        - name: source_id
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: Public source detail}

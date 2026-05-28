@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman v2.0 Model Lab Dataset Plan",
+  "type": "object",
+  "required": [
+    "name",
+    "base_model",
+    "target_sample_count"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "base_model": {
+      "type": "string"
+    },
+    "target_sample_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "include_raw_scraped": {
+      "type": "boolean",
+      "const": false
+    }
+  }
+}

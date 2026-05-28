@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman Publication Item",
+  "type": "object",
+  "required": ["title", "body", "status"],
+  "properties": {
+    "title": {"type": "string"},
+    "body": {"type": "string"},
+    "status": {"enum": ["DRAFT", "REVIEW_READY", "SCHEDULED", "PUBLISHED", "ARCHIVED"]},
+    "channel_id": {"type": ["string", "null"]},
+    "public_slug": {"type": ["string", "null"]},
+    "publication_metadata": {"type": "object"}
+  }
+}

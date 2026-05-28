@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atman-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: atman-api
+  template:
+    metadata:
+      labels:
+        app: atman-api
+    spec:
+      containers:
+        - name: api
+          image: atman-api:1.0.0
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: atman-secrets
+            - configMapRef:
+                name: atman-config
+          readinessProbe:
+            httpGet:
+              path: /ops/readiness
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 15

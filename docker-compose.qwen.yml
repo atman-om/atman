@@ -1,0 +1,38 @@
+services:
+  qwen-vllm:
+    image: ${ATMAN_QWEN_VLLM_IMAGE:-vllm/vllm-openai:latest}
+    profiles: ["qwen-vllm"]
+    command:
+      - --model
+      - ${ATMAN_QWEN_MODEL_ID:-Qwen/Qwen3-14B}
+      - --served-model-name
+      - ${ATMAN_QWEN_MODEL_ID:-Qwen/Qwen3-14B}
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+    environment:
+      HUGGING_FACE_HUB_TOKEN: ${HF_TOKEN:-}
+    volumes:
+      - qwen_model_cache:/root/.cache/huggingface
+    ports:
+      - "8001:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  qwen-ollama:
+    image: ollama/ollama:latest
+    profiles: ["qwen-ollama"]
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+
+volumes:
+  qwen_model_cache:
+  ollama_data:

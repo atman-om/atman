@@ -1,0 +1,694 @@
+{
+  "project": "Atman",
+  "artifact": "ATMAN_CANONICAL_DOCS_v0_2_1",
+  "version": "v0.2.1",
+  "date": "2026-05-28",
+  "status": "canonical_repo_generation_ready_patch",
+  "base_artifact": "ATMAN_CANONICAL_DOCS_v0_2",
+  "locked_decisions": {
+    "base_model_family": "Qwen",
+    "working_model_name": "Atman-Lab-Qwen",
+    "production_model_status": "not_released_until_release_gate_passes",
+    "external_llm_policy": "helper_worker_only_not_source_authority",
+    "web_corpus_policy": "rights_robots_provenance_gated"
+  },
+  "file_count_excluding_manifest": 135,
+  "files": [
+    {
+      "path": "00_MASTER_INDEX.md",
+      "sha256": "d7add9c243635470a4fcce0b95a8d6a2e8864d2bab0ddb81f37d114ab597b646",
+      "bytes": 2205
+    },
+    {
+      "path": "01_VISION_AND_PRINCIPLES.md",
+      "sha256": "e75e407303802fcf8d3466ea0869b65ef28bc81cea3b3ed5dd17dd947040aa38",
+      "bytes": 2947
+    },
+    {
+      "path": "02_SYSTEM_ARCHITECTURE.md",
+      "sha256": "5969cfbb64733be807b3bbb981dd9507274455d94d53d3e8840530f8974c8fbc",
+      "bytes": 2796
+    },
+    {
+      "path": "03_AGENT_ARCHITECTURE.md",
+      "sha256": "61a179993daae28a76c3b4e1619c01a528d49dd629fa599abde52c8fe1a178a2",
+      "bytes": 2657
+    },
+    {
+      "path": "04_CORPUS_AND_DATA_ZONES.md",
+      "sha256": "0797c102715a6271af292a36651d60a66ab8b418a5a9fbd8051b639fd1a1f3d9",
+      "bytes": 2423
+    },
+    {
+      "path": "05_RAG_AND_RETRIEVAL_SPEC.md",
+      "sha256": "e716f1ea326033e342c69f14908453473040b3f9740a1fdfef8466229b52e6b6",
+      "bytes": 2234
+    },
+    {
+      "path": "06_FINE_TUNING_AND_MODEL_SPEC.md",
+      "sha256": "97833abc94cc087dea96a58c49e0a34de5485f370c2deef31efc12c8c2d93b72",
+      "bytes": 2219
+    },
+    {
+      "path": "07_RUNTIME_BEHAVIOR_POLICY.md",
+      "sha256": "73cbba5e6e661b89f2e124198a7ddc82df5d2687237005abf675eb27c3e1b782",
+      "bytes": 2604
+    },
+    {
+      "path": "08_SECURITY_AND_GOVERNANCE.md",
+      "sha256": "854c856cfe8983b1390bd0261625a911aea1d493392325709860cdf3cddcd4e5",
+      "bytes": 2019
+    },
+    {
+      "path": "09_API_AND_MODULE_CONTRACTS.md",
+      "sha256": "a3c2cda69f85e1e51f029653b03a2aeea3da8145cc9363ad6d95c2fe15b508a0",
+      "bytes": 2673
+    },
+    {
+      "path": "10_INFRASTRUCTURE_AND_DEPLOYMENT.md",
+      "sha256": "d3d512d5b1eb1980282d1e5180acad2ba1d2d949fb271739978fc1f4d629d8be",
+      "bytes": 1530
+    },
+    {
+      "path": "11_EVALUATION_AND_RELEASE_GATES.md",
+      "sha256": "adc45066b1ef5961206b1b0090ae48afa872f7c1e441c6d023971e5da41eb540",
+      "bytes": 1942
+    },
+    {
+      "path": "12_ROADMAP_AND_ADRS.md",
+      "sha256": "191eff093b3d5fbe52a507ffbdcf51bda162f011f2c29585ac73a83b95bfc12e",
+      "bytes": 2863
+    },
+    {
+      "path": "13_DATABASE_SCHEMA.md",
+      "sha256": "d4ee6c5b49ecb2b59577e48e567f7be2897c44084bc4e8d3e411b06536d3cfd5",
+      "bytes": 9469
+    },
+    {
+      "path": "14_REPO_STRUCTURE_AND_DEVOPS.md",
+      "sha256": "8cd3add3ae54c7a7a58c50affa4a99ce7d7cb0136afe5087a582f2842f2379ec",
+      "bytes": 2725
+    },
+    {
+      "path": "15_AGENT_TOOL_CONTRACTS.md",
+      "sha256": "47b489b724b90ed1f12d3ae33b13cbe394481029b96babf42a6e4ea313d5cec6",
+      "bytes": 3282
+    },
+    {
+      "path": "16_ONTOLOGY_AND_TAGGING_SPEC.md",
+      "sha256": "d6c977bb665b57cd1f5ede1e722cf978e23f84c1ebc6b70db84dca1fe0c63a81",
+      "bytes": 2366
+    },
+    {
+      "path": "17_EVAL_DATASETS_AND_GRADERS.md",
+      "sha256": "ef6517c1e8e42dbdd6fbee0bce0847986a7b57e06581ffcd769c21dce65818f2",
+      "bytes": 2890
+    },
+    {
+      "path": "18_RIGHTS_AND_LICENSING_PLAYBOOK.md",
+      "sha256": "42a269352aeeeddd3dafad6e2ef4447f16fdb3b22843a56e6900faf1db92e652",
+      "bytes": 2514
+    },
+    {
+      "path": "19_ATMAN_STUDIO_UI_SPEC.md",
+      "sha256": "3f42b32e6772b8ef736521aaa7616b96dc26676802d5cc4815c189e6b8043914",
+      "bytes": 2416
+    },
+    {
+      "path": "20_PUBLIC_APP_UX_SPEC.md",
+      "sha256": "e67bc09552b2e26680a1b368704cd98c64851a0f2eb3dd485665d532dfe65244",
+      "bytes": 2348
+    },
+    {
+      "path": "21_MODEL_TRAINING_RUNBOOK.md",
+      "sha256": "f635f2d95bbc9f63d9aee44430bc543a633b432410758aa2fe4b388166e1be06",
+      "bytes": 2591
+    },
+    {
+      "path": "22_ACCEPTANCE_TESTS.md",
+      "sha256": "8dd97a15fee683ab61ec3f2358dcb9d35a5bded795b795b6fe45da0310719b09",
+      "bytes": 2183
+    },
+    {
+      "path": "23_OBSERVABILITY_AND_TELEMETRY.md",
+      "sha256": "b0d96f0ce799756443900a1542be74f9d2068317fe2f4f87da6b6d7a96540799",
+      "bytes": 2084
+    },
+    {
+      "path": "24_SYNTHETIC_DATA_POLICY.md",
+      "sha256": "10a12c74a6df5d5b7c9e5beeba9934a3d73e8e77cfafe9c3b97958beb1fd3e0a",
+      "bytes": 1855
+    },
+    {
+      "path": "25_RUNTIME_SAFETY_AND_GUARDRAILS.md",
+      "sha256": "a1e59151055b7057c8d607d8bcdd6dabac716cf186b5a89da34a001166ccf33a",
+      "bytes": 1996
+    },
+    {
+      "path": "26_SEARCH_AND_INDEX_LIFECYCLE.md",
+      "sha256": "534c086b92a1695d8940d28d8ed3f32be00b8302d00131861db0cea837bfe08c",
+      "bytes": 1867
+    },
+    {
+      "path": "27_VERSIONING_AND_ARTIFACT_REGISTRY.md",
+      "sha256": "08ef078ec1bdbd78d9ded7b097f515ffef76eff07ce19d88c999fc15eb367a43",
+      "bytes": 1732
+    },
+    {
+      "path": "28_BACKUP_RECOVERY_AND_RETENTION.md",
+      "sha256": "631df47af8464b6ff34c9f4f324dbc9e5294b502a4a4853c2dddb13a262dc0fd",
+      "bytes": 1970
+    },
+    {
+      "path": "29_ENVIRONMENT_VARIABLES_AND_SECRETS.md",
+      "sha256": "f1f094bbab5a997fd690db52c5a2a5d665b45bbe5be096e986d499671f526b7f",
+      "bytes": 1856
+    },
+    {
+      "path": "30_OPERATIONS_RUNBOOK.md",
+      "sha256": "8ca0e486372d28c031e01af5ecf57e33259e5020a3f76bb7e4d4f5c221f2c2a2",
+      "bytes": 2523
+    },
+    {
+      "path": "31_OPENAPI_SPEC.md",
+      "sha256": "4625e7fe8aa87de7e10116da1e542fc4c4af98bad03cc5f44f2b895107268016",
+      "bytes": 4172
+    },
+    {
+      "path": "32_STATE_MACHINES.md",
+      "sha256": "3cdb055e3c864568f2075786613dc6d0d8b0d6f0b30ad46f608b657046bf2be4",
+      "bytes": 2616
+    },
+    {
+      "path": "33_RBAC_AND_ADMIN_PERMISSIONS.md",
+      "sha256": "b2cbaafb484b3beda0c1e2b8fc58f36c819d6264d94ff3b08c38a0e14a97a720",
+      "bytes": 2229
+    },
+    {
+      "path": "34_SOURCE_LOCATOR_STANDARD.md",
+      "sha256": "0611f8810718863f0bdcb1da00b2f778f5d08415d6bd1e6cc273fe103dbccd84",
+      "bytes": 2384
+    },
+    {
+      "path": "35_PROMPT_PACK_SPEC.md",
+      "sha256": "84b4eba26f1f3ba8aefc0a2a3cee108bed03b7422de7107345099b328aca4fe0",
+      "bytes": 2124
+    },
+    {
+      "path": "36_SEED_DATASETS_AND_JSONL_FORMATS.md",
+      "sha256": "52b5f980a7caf832fb2f1df121a74bf860c6b832f7fd6730b7109d3a59266b87",
+      "bytes": 1962
+    },
+    {
+      "path": "37_DOCKER_COMPOSE_AND_LOCAL_DEV.md",
+      "sha256": "4293340d06f8074308ff4f47c138d98a024bc674acbbd0e4f68cff76bc0bfdee",
+      "bytes": 1495
+    },
+    {
+      "path": "38_UI_ROUTE_AND_COMPONENT_MAP.md",
+      "sha256": "b991f94d8a4458fa1b55f5078c5c1f3efab4731a5811b0c564ea9a5a8ebeeeb0",
+      "bytes": 2106
+    },
+    {
+      "path": "39_TEST_PLAN_AND_FIXTURE_REGISTRY.md",
+      "sha256": "a7cde246c3716f04446525f3b632fddcf1a9c713913af8deb1c4ae7b23ed0ebf",
+      "bytes": 1933
+    },
+    {
+      "path": "40_MODEL_SELECTION_DECISION_MATRIX.md",
+      "sha256": "8f8bddaece739b50d1cf9be3e3354bd8c36199582119e55b1e535879034c9ad2",
+      "bytes": 1988
+    },
+    {
+      "path": "41_WEB_TO_CORPUS_PIPELINE.md",
+      "sha256": "5a2ce22fd0aefc1f500154412582d4cddc6ae9439dad8e1e043b1a2ed5fa4dcd",
+      "bytes": 2031
+    },
+    {
+      "path": "42_MULTI_LLM_EXTRACTION_POLICY.md",
+      "sha256": "1e37428d4c463de4467d8244e505ec4aab74ee66bd9012af043ecddf3f6c73e7",
+      "bytes": 1870
+    },
+    {
+      "path": "43_CRAWLER_RIGHTS_AND_ROBOTS_POLICY.md",
+      "sha256": "da2f7a645ca77fa429828e987605f93aa82c28cde1354124e5f2b9fdecc8dd7a",
+      "bytes": 1701
+    },
+    {
+      "path": "44_WEB_SOURCE_QUALITY_SCORING.md",
+      "sha256": "80952c872b22f099230d05f1c1669ed3ba298f2c7580eeb61dd4a083eb9c04d6",
+      "bytes": 1450
+    },
+    {
+      "path": "45_CORPUS_PROVENANCE_LEDGER.md",
+      "sha256": "4eb7983a3771027c0e7c7c0bbdb0b77ce837cd691249c4416c8a25db460c243c",
+      "bytes": 1676
+    },
+    {
+      "path": "46_MODEL_DISTILLATION_AND_CONTAMINATION_POLICY.md",
+      "sha256": "9a9f35bd2559f0ab8509341748e86a6f05b66e2d17d2b508d69fdc66d692af39",
+      "bytes": 1974
+    },
+    {
+      "path": "47_QWEN_MODEL_STACK.md",
+      "sha256": "50e8085d7a92a3d9a4599e29746dcc3706e46cde693930573502e315f1d0d39d",
+      "bytes": 2401
+    },
+    {
+      "path": "CHANGELOG_v0_1_to_v0_2.md",
+      "sha256": "95086a294998c8ae686da47525df145dd879b64c9ea21c658c1f78737ac6108e",
+      "bytes": 1730
+    },
+    {
+      "path": "CHANGELOG_v0_2_to_v0_2_1.md",
+      "sha256": "fcad1afd645cdbb825eb752798db56ed78c8ba6a51594643fe91b753e71c0a88",
+      "bytes": 1142
+    },
+    {
+      "path": "README.md",
+      "sha256": "48138cd3cc354751a5ca8cdd312950d438441da07ee62e03525150519c177042",
+      "bytes": 1067
+    },
+    {
+      "path": "archive/v0_1_original/00_MASTER_INDEX.md",
+      "sha256": "1ccfb4e9a743bfa677dc731e8ebbeec0ace21eef20a3bca9bcae5f1929a96e78",
+      "bytes": 2805
+    },
+    {
+      "path": "archive/v0_1_original/01_PRODUCT_VISION_AND_SCOPE.md",
+      "sha256": "74e3d01fc3d9cf6845472c9fece2429b4aae5c53ac7ee733a43f3b5c3eb1cf4d",
+      "bytes": 2243
+    },
+    {
+      "path": "archive/v0_1_original/02_SYSTEM_ARCHITECTURE.md",
+      "sha256": "c82f543809952fd7c3ccadc03601252a07b0e03baa0224054c7c1fc58d90c771",
+      "bytes": 1919
+    },
+    {
+      "path": "archive/v0_1_original/03_AGENT_SPECIFICATIONS.md",
+      "sha256": "eb109aa964f25dc2079aafbdac0adbfc48a0958f7c235c4219637e1a5ab2ef23",
+      "bytes": 2123
+    },
+    {
+      "path": "archive/v0_1_original/04_CORPUS_AND_DATA_GOVERNANCE.md",
+      "sha256": "5520a9a432d405dc914c355935be319692e0cb5676eee73ca742a11ab9171510",
+      "bytes": 2152
+    },
+    {
+      "path": "archive/v0_1_original/05_RAG_AND_TATTVANET_SPEC.md",
+      "sha256": "c2560165d9a37d6b2766b1bbb97c9ed4ec41edd955bba4f0945e0a2f4fc972b5",
+      "bytes": 1572
+    },
+    {
+      "path": "archive/v0_1_original/06_ATMAN_LLM_AND_FINETUNING_SPEC.md",
+      "sha256": "0970010848406756bc8caa87d098ad0ae04def6621c9c091e6092561f93d8fe2",
+      "bytes": 1804
+    },
+    {
+      "path": "archive/v0_1_original/07_NYAYABENCH_EVALUATION_SPEC.md",
+      "sha256": "fe1abb62ba9308b266fe7357a913c72129ff551cd1190d4246ffdefeb37b021c",
+      "bytes": 1564
+    },
+    {
+      "path": "archive/v0_1_original/08_RUNTIME_ANSWER_POLICY.md",
+      "sha256": "0853ba817f4c9cc3dc34cc577bd3965c9bc6dfb8cd9cb58951d8552816404796",
+      "bytes": 2154
+    },
+    {
+      "path": "archive/v0_1_original/09_API_AND_MODULE_CONTRACTS.md",
+      "sha256": "a82c576f29d2b39e5d413461f001f7e78cc484414bfc8ea328e50bb577e963f9",
+      "bytes": 1767
+    },
+    {
+      "path": "archive/v0_1_original/10_INFRA_DEPLOYMENT_AND_SECURITY.md",
+      "sha256": "861d955e597e7647a91c9f987f59656ba97835cd7046db4488bf3af54c401097",
+      "bytes": 1423
+    },
+    {
+      "path": "archive/v0_1_original/11_VERSION_ROADMAP.md",
+      "sha256": "268ec497321b27875cc399e67ea224a34a5d8bb336abaefd906a9874ccb06f0c",
+      "bytes": 2142
+    },
+    {
+      "path": "archive/v0_1_original/12_ADR_DECISION_LOG.md",
+      "sha256": "282b5c553504e99e9783b2a13bde038bf88b1de0e334d34a7231b0bcdbe2cc4d",
+      "bytes": 1857
+    },
+    {
+      "path": "archive/v0_1_original/README.md",
+      "sha256": "466f42501a9fa4eee658646a2c72a7f44f2232974807bfbd4eb31ed686d6e681",
+      "bytes": 1342
+    },
+    {
+      "path": "archive/v0_2_original/00_MASTER_INDEX.md",
+      "sha256": "246de23047c3a4fc2069217f5fb0d456d3886e8e3cda0183bde7f8981bffb378",
+      "bytes": 3965
+    },
+    {
+      "path": "archive/v0_2_original/01_VISION_AND_PRINCIPLES.md",
+      "sha256": "e75e407303802fcf8d3466ea0869b65ef28bc81cea3b3ed5dd17dd947040aa38",
+      "bytes": 2947
+    },
+    {
+      "path": "archive/v0_2_original/02_SYSTEM_ARCHITECTURE.md",
+      "sha256": "5969cfbb64733be807b3bbb981dd9507274455d94d53d3e8840530f8974c8fbc",
+      "bytes": 2796
+    },
+    {
+      "path": "archive/v0_2_original/03_AGENT_ARCHITECTURE.md",
+      "sha256": "61a179993daae28a76c3b4e1619c01a528d49dd629fa599abde52c8fe1a178a2",
+      "bytes": 2657
+    },
+    {
+      "path": "archive/v0_2_original/04_CORPUS_AND_DATA_ZONES.md",
+      "sha256": "0797c102715a6271af292a36651d60a66ab8b418a5a9fbd8051b639fd1a1f3d9",
+      "bytes": 2423
+    },
+    {
+      "path": "archive/v0_2_original/05_RAG_AND_RETRIEVAL_SPEC.md",
+      "sha256": "e716f1ea326033e342c69f14908453473040b3f9740a1fdfef8466229b52e6b6",
+      "bytes": 2234
+    },
+    {
+      "path": "archive/v0_2_original/06_FINE_TUNING_AND_MODEL_SPEC.md",
+      "sha256": "97833abc94cc087dea96a58c49e0a34de5485f370c2deef31efc12c8c2d93b72",
+      "bytes": 2219
+    },
+    {
+      "path": "archive/v0_2_original/07_RUNTIME_BEHAVIOR_POLICY.md",
+      "sha256": "73cbba5e6e661b89f2e124198a7ddc82df5d2687237005abf675eb27c3e1b782",
+      "bytes": 2604
+    },
+    {
+      "path": "archive/v0_2_original/08_SECURITY_AND_GOVERNANCE.md",
+      "sha256": "854c856cfe8983b1390bd0261625a911aea1d493392325709860cdf3cddcd4e5",
+      "bytes": 2019
+    },
+    {
+      "path": "archive/v0_2_original/09_API_AND_MODULE_CONTRACTS.md",
+      "sha256": "a3c2cda69f85e1e51f029653b03a2aeea3da8145cc9363ad6d95c2fe15b508a0",
+      "bytes": 2673
+    },
+    {
+      "path": "archive/v0_2_original/10_INFRASTRUCTURE_AND_DEPLOYMENT.md",
+      "sha256": "d3d512d5b1eb1980282d1e5180acad2ba1d2d949fb271739978fc1f4d629d8be",
+      "bytes": 1530
+    },
+    {
+      "path": "archive/v0_2_original/11_EVALUATION_AND_RELEASE_GATES.md",
+      "sha256": "adc45066b1ef5961206b1b0090ae48afa872f7c1e441c6d023971e5da41eb540",
+      "bytes": 1942
+    },
+    {
+      "path": "archive/v0_2_original/12_ROADMAP_AND_ADRS.md",
+      "sha256": "191eff093b3d5fbe52a507ffbdcf51bda162f011f2c29585ac73a83b95bfc12e",
+      "bytes": 2863
+    },
+    {
+      "path": "archive/v0_2_original/13_DATABASE_SCHEMA.md",
+      "sha256": "d4ee6c5b49ecb2b59577e48e567f7be2897c44084bc4e8d3e411b06536d3cfd5",
+      "bytes": 9469
+    },
+    {
+      "path": "archive/v0_2_original/14_REPO_STRUCTURE_AND_DEVOPS.md",
+      "sha256": "8cd3add3ae54c7a7a58c50affa4a99ce7d7cb0136afe5087a582f2842f2379ec",
+      "bytes": 2725
+    },
+    {
+      "path": "archive/v0_2_original/15_AGENT_TOOL_CONTRACTS.md",
+      "sha256": "47b489b724b90ed1f12d3ae33b13cbe394481029b96babf42a6e4ea313d5cec6",
+      "bytes": 3282
+    },
+    {
+      "path": "archive/v0_2_original/16_ONTOLOGY_AND_TAGGING_SPEC.md",
+      "sha256": "d6c977bb665b57cd1f5ede1e722cf978e23f84c1ebc6b70db84dca1fe0c63a81",
+      "bytes": 2366
+    },
+    {
+      "path": "archive/v0_2_original/17_EVAL_DATASETS_AND_GRADERS.md",
+      "sha256": "ef6517c1e8e42dbdd6fbee0bce0847986a7b57e06581ffcd769c21dce65818f2",
+      "bytes": 2890
+    },
+    {
+      "path": "archive/v0_2_original/18_RIGHTS_AND_LICENSING_PLAYBOOK.md",
+      "sha256": "42a269352aeeeddd3dafad6e2ef4447f16fdb3b22843a56e6900faf1db92e652",
+      "bytes": 2514
+    },
+    {
+      "path": "archive/v0_2_original/19_ATMAN_STUDIO_UI_SPEC.md",
+      "sha256": "3f42b32e6772b8ef736521aaa7616b96dc26676802d5cc4815c189e6b8043914",
+      "bytes": 2416
+    },
+    {
+      "path": "archive/v0_2_original/20_PUBLIC_APP_UX_SPEC.md",
+      "sha256": "e67bc09552b2e26680a1b368704cd98c64851a0f2eb3dd485665d532dfe65244",
+      "bytes": 2348
+    },
+    {
+      "path": "archive/v0_2_original/21_MODEL_TRAINING_RUNBOOK.md",
+      "sha256": "f635f2d95bbc9f63d9aee44430bc543a633b432410758aa2fe4b388166e1be06",
+      "bytes": 2591
+    },
+    {
+      "path": "archive/v0_2_original/22_ACCEPTANCE_TESTS.md",
+      "sha256": "8dd97a15fee683ab61ec3f2358dcb9d35a5bded795b795b6fe45da0310719b09",
+      "bytes": 2183
+    },
+    {
+      "path": "archive/v0_2_original/23_OBSERVABILITY_AND_TELEMETRY.md",
+      "sha256": "b0d96f0ce799756443900a1542be74f9d2068317fe2f4f87da6b6d7a96540799",
+      "bytes": 2084
+    },
+    {
+      "path": "archive/v0_2_original/24_SYNTHETIC_DATA_POLICY.md",
+      "sha256": "10a12c74a6df5d5b7c9e5beeba9934a3d73e8e77cfafe9c3b97958beb1fd3e0a",
+      "bytes": 1855
+    },
+    {
+      "path": "archive/v0_2_original/25_RUNTIME_SAFETY_AND_GUARDRAILS.md",
+      "sha256": "a1e59151055b7057c8d607d8bcdd6dabac716cf186b5a89da34a001166ccf33a",
+      "bytes": 1996
+    },
+    {
+      "path": "archive/v0_2_original/26_SEARCH_AND_INDEX_LIFECYCLE.md",
+      "sha256": "534c086b92a1695d8940d28d8ed3f32be00b8302d00131861db0cea837bfe08c",
+      "bytes": 1867
+    },
+    {
+      "path": "archive/v0_2_original/27_VERSIONING_AND_ARTIFACT_REGISTRY.md",
+      "sha256": "08ef078ec1bdbd78d9ded7b097f515ffef76eff07ce19d88c999fc15eb367a43",
+      "bytes": 1732
+    },
+    {
+      "path": "archive/v0_2_original/28_BACKUP_RECOVERY_AND_RETENTION.md",
+      "sha256": "631df47af8464b6ff34c9f4f324dbc9e5294b502a4a4853c2dddb13a262dc0fd",
+      "bytes": 1970
+    },
+    {
+      "path": "archive/v0_2_original/29_ENVIRONMENT_VARIABLES_AND_SECRETS.md",
+      "sha256": "f1f094bbab5a997fd690db52c5a2a5d665b45bbe5be096e986d499671f526b7f",
+      "bytes": 1856
+    },
+    {
+      "path": "archive/v0_2_original/30_OPERATIONS_RUNBOOK.md",
+      "sha256": "8ca0e486372d28c031e01af5ecf57e33259e5020a3f76bb7e4d4f5c221f2c2a2",
+      "bytes": 2523
+    },
+    {
+      "path": "archive/v0_2_original/CHANGELOG_v0_1_to_v0_2.md",
+      "sha256": "95086a294998c8ae686da47525df145dd879b64c9ea21c658c1f78737ac6108e",
+      "bytes": 1730
+    },
+    {
+      "path": "archive/v0_2_original/README.md",
+      "sha256": "a5199bdb208179aaa3e6b0f628196158e0c2f86a354bc6c331e30ae3f6c46577",
+      "bytes": 1638
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/00_MASTER_INDEX.md",
+      "sha256": "1ccfb4e9a743bfa677dc731e8ebbeec0ace21eef20a3bca9bcae5f1929a96e78",
+      "bytes": 2805
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/01_PRODUCT_VISION_AND_SCOPE.md",
+      "sha256": "74e3d01fc3d9cf6845472c9fece2429b4aae5c53ac7ee733a43f3b5c3eb1cf4d",
+      "bytes": 2243
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/02_SYSTEM_ARCHITECTURE.md",
+      "sha256": "c82f543809952fd7c3ccadc03601252a07b0e03baa0224054c7c1fc58d90c771",
+      "bytes": 1919
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/03_AGENT_SPECIFICATIONS.md",
+      "sha256": "eb109aa964f25dc2079aafbdac0adbfc48a0958f7c235c4219637e1a5ab2ef23",
+      "bytes": 2123
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/04_CORPUS_AND_DATA_GOVERNANCE.md",
+      "sha256": "5520a9a432d405dc914c355935be319692e0cb5676eee73ca742a11ab9171510",
+      "bytes": 2152
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/05_RAG_AND_TATTVANET_SPEC.md",
+      "sha256": "c2560165d9a37d6b2766b1bbb97c9ed4ec41edd955bba4f0945e0a2f4fc972b5",
+      "bytes": 1572
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/06_ATMAN_LLM_AND_FINETUNING_SPEC.md",
+      "sha256": "0970010848406756bc8caa87d098ad0ae04def6621c9c091e6092561f93d8fe2",
+      "bytes": 1804
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/07_NYAYABENCH_EVALUATION_SPEC.md",
+      "sha256": "fe1abb62ba9308b266fe7357a913c72129ff551cd1190d4246ffdefeb37b021c",
+      "bytes": 1564
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/08_RUNTIME_ANSWER_POLICY.md",
+      "sha256": "0853ba817f4c9cc3dc34cc577bd3965c9bc6dfb8cd9cb58951d8552816404796",
+      "bytes": 2154
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/09_API_AND_MODULE_CONTRACTS.md",
+      "sha256": "a82c576f29d2b39e5d413461f001f7e78cc484414bfc8ea328e50bb577e963f9",
+      "bytes": 1767
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/10_INFRA_DEPLOYMENT_AND_SECURITY.md",
+      "sha256": "861d955e597e7647a91c9f987f59656ba97835cd7046db4488bf3af54c401097",
+      "bytes": 1423
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/11_VERSION_ROADMAP.md",
+      "sha256": "268ec497321b27875cc399e67ea224a34a5d8bb336abaefd906a9874ccb06f0c",
+      "bytes": 2142
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/12_ADR_DECISION_LOG.md",
+      "sha256": "282b5c553504e99e9783b2a13bde038bf88b1de0e334d34a7231b0bcdbe2cc4d",
+      "bytes": 1857
+    },
+    {
+      "path": "archive/v0_2_original/archive/v0_1_original/README.md",
+      "sha256": "466f42501a9fa4eee658646a2c72a7f44f2232974807bfbd4eb31ed686d6e681",
+      "bytes": 1342
+    },
+    {
+      "path": "datasets/eval/nyayabench_citation_seed.jsonl",
+      "sha256": "ac4b09040290d1e9e82f076e92e5f26824bc204b9ed2d17852fb51f3f1913775",
+      "bytes": 335
+    },
+    {
+      "path": "datasets/eval/nyayabench_fake_shloka_seed.jsonl",
+      "sha256": "a6182754a8d01754eb9a19a5f6563e5f858d27e073cc2a8d04cf381e7de82ded",
+      "bytes": 811
+    },
+    {
+      "path": "datasets/eval/nyayabench_gita_qa_seed.jsonl",
+      "sha256": "30e7b395311460eb1d6c770052cffde078d4652ec78fabe6fc5c7308561b1c0a",
+      "bytes": 768
+    },
+    {
+      "path": "datasets/eval/nyayabench_ritual_safety_seed.jsonl",
+      "sha256": "d843ed28311fc8b0e6c55f564287dcb728552174dbf868052431131f47989d49",
+      "bytes": 429
+    },
+    {
+      "path": "datasets/eval/nyayabench_sampradaya_seed.jsonl",
+      "sha256": "df785619078511be931631b15e118db9248a719a79825727e11c9af4a3d0c107",
+      "bytes": 498
+    },
+    {
+      "path": "fixtures/README.md",
+      "sha256": "90399d54807d4451898856dcf64469470435629a45d41eb24c4bb9a6ba7a8360",
+      "bytes": 227
+    },
+    {
+      "path": "infra/.env.example",
+      "sha256": "59c047b7d1b6eaa918e02cd34ac119016654ba919fd76506479fb9ecf18c9a2a",
+      "bytes": 559
+    },
+    {
+      "path": "infra/docker-compose.yml",
+      "sha256": "b6710d303f99e62fa22fa149ceb9db0fd0a884280c45710431c79faea051d3b6",
+      "bytes": 1175
+    },
+    {
+      "path": "migrations/001_initial_schema.sql",
+      "sha256": "006e4b6d1ef99d7d56feeb831b8c319bcd506e900ccc7468953412d68a535272",
+      "bytes": 1990
+    },
+    {
+      "path": "prompts/citation_validator_prompt.md",
+      "sha256": "6e2fcb4caa499b0b0524b7d268f5147e112db855cd33c6b0b1c2d382d6595597",
+      "bytes": 241
+    },
+    {
+      "path": "prompts/content_factory_prompt_hi.md",
+      "sha256": "eb4e060826548214b44e62d7a9d2f06420e8f57b71af1eb00255648d6c04a4ad",
+      "bytes": 315
+    },
+    {
+      "path": "prompts/extractor_claims_prompt.md",
+      "sha256": "5bfd677c037065e5c85dbcd980523425a971b6261ac58efaa62e64a5b8271b02",
+      "bytes": 224
+    },
+    {
+      "path": "prompts/fake_shloka_detector_prompt.md",
+      "sha256": "006978164dd1e4963f6fe14b6c23a57e6a0ecf53653b09d9106371c33660f922",
+      "bytes": 227
+    },
+    {
+      "path": "prompts/rag_answer_prompt_hi.md",
+      "sha256": "dd4aeea81d3e9e6e5d63a950ffc45d84ee1dde8d38bf25d72bcc3a6d87ca8edd",
+      "bytes": 496
+    },
+    {
+      "path": "prompts/rights_classifier_prompt.md",
+      "sha256": "422d3a7e5067cd2b3d886ff71aab730b00fddc22c7635adbfeb7c2f02e38ced6",
+      "bytes": 226
+    },
+    {
+      "path": "prompts/safety_guard_prompt.md",
+      "sha256": "726efe7b1cc01adc357098912e0e44ff5d905f4245be159af6e95ae1817acd67",
+      "bytes": 246
+    },
+    {
+      "path": "prompts/system_atman_acharya_hi.md",
+      "sha256": "fd40a88b6c0cfe48433e42ddabeb29ad835ad74866ab15455fc716ddd061d223",
+      "bytes": 781
+    },
+    {
+      "path": "schemas/chunk.schema.json",
+      "sha256": "4464ad07dd30ad3f3af97448892abf16b4f1083a1cd56a437fb0bb9ded964915",
+      "bytes": 586
+    },
+    {
+      "path": "schemas/eval_case.schema.json",
+      "sha256": "afa29ba268442247ea5a539e400b4879ac9a7251fadb86f3c34671f1e8eb13d2",
+      "bytes": 865
+    },
+    {
+      "path": "schemas/openapi.yaml",
+      "sha256": "39fbe28f131d195088c1ed354cdf7f57738c982d5772154735f4a357434c30ca",
+      "bytes": 2475
+    },
+    {
+      "path": "schemas/release_gate.schema.json",
+      "sha256": "43bbb07542642a63edbc6dca688757ed21e5f1715ca3885b6d38c4a3f7a1d3a2",
+      "bytes": 707
+    },
+    {
+      "path": "schemas/rights_review.schema.json",
+      "sha256": "58351ee9cc4d11befe1715660247c97270788c1ba926fb87b933d100bcf7f19a",
+      "bytes": 815
+    },
+    {
+      "path": "schemas/source.schema.json",
+      "sha256": "2771504e2549242901ff96265e5f56e87f1315c6669995d1ebe54e19dbb629e4",
+      "bytes": 809
+    }
+  ],
+  "manifest_note": "manifest.json is excluded from its own checksum list to avoid self-referential hashing."
+}

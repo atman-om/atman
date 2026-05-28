@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtmanReleaseGate",
+  "type": "object",
+  "required": [
+    "release_id",
+    "artifact_type",
+    "artifact_version",
+    "allowed",
+    "metrics"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string"
+    },
+    "artifact_type": {
+      "enum": [
+        "model",
+        "rag_index",
+        "dataset",
+        "prompt_pack",
+        "runtime"
+      ]
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "allowed": {
+      "type": "boolean"
+    },
+    "hard_failures": {
+      "type": "array"
+    },
+    "soft_warnings": {
+      "type": "array"
+    },
+    "metrics": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+openapi: 3.1.0
+info:
+  title: Atman v1.0 API Extensions
+  version: 1.0.0
+paths:
+  /ocr/analyze:
+    post:
+      summary: Analyze uploaded file for OCR/text extraction status
+  /web-to-corpus/jobs:
+    post:
+      summary: Register or execute a governed crawl job
+  /training/datasets/build:
+    post:
+      summary: Build provenance-bound Qwen training dataset
+  /training/runs/start:
+    post:
+      summary: Start simulated or real-gated LoRA/QLoRA training run
+  /ops/readiness:
+    get:
+      summary: Production readiness report

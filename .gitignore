@@ -1,0 +1,38 @@
+.venv/
+*.egg-info/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+.next/
+dist/
+build/
+.env
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+.DS_Store
+storage/
+.tmp/
+.coverage
+htmlcov/
+*.log
+
+# Keep original drop archives, not expanded duplicate snapshots with deep paths.
+archive/*_original/
+
+
+# v0.5 generated runtime artifacts
+apps/public/.next/
+apps/public/node_modules/
+generated/runtime/
+*.safetensors
+*.gguf
+
+# v0.6 corpus ingestion artifacts
+generated/uploads/
+generated/extraction/
+generated/models/
+generated/quarantine/

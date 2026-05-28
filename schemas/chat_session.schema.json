@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman Chat Session",
+  "type": "object",
+  "required": ["title", "mode", "language", "citation_mode"],
+  "properties": {
+    "title": {"type": "string"},
+    "mode": {"enum": ["simple", "source", "scholar", "teacher", "admin_debug"]},
+    "language": {"type": "string", "default": "hi"},
+    "citation_mode": {"enum": ["hidden", "source", "scholar"]},
+    "session_metadata": {"type": "object"}
+  }
+}

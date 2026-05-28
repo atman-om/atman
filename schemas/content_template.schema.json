@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtmanContentTemplate",
+  "type": "object",
+  "required": [
+    "name",
+    "content_type",
+    "prompt_template"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "content_type": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "prompt_template": {
+      "type": "string"
+    },
+    "output_schema": {
+      "type": "object"
+    },
+    "version": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    }
+  }
+}

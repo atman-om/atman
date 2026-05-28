@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "model_name",
+    "base_model",
+    "adapter_uri"
+  ],
+  "properties": {
+    "model_name": {
+      "type": "string"
+    },
+    "base_model": {
+      "type": "string"
+    },
+    "adapter_uri": {
+      "type": "string"
+    }
+  }
+}

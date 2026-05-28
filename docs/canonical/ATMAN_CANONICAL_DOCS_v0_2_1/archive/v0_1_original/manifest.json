@@ -1,0 +1,32 @@
+{
+  "project": "Atman",
+  "version": "ATMAN_CANONICAL_DOCS_v0_1",
+  "date": "2026-05-28",
+  "documents": [
+    "00_MASTER_INDEX.md",
+    "01_PRODUCT_VISION_AND_SCOPE.md",
+    "02_SYSTEM_ARCHITECTURE.md",
+    "03_AGENT_SPECIFICATIONS.md",
+    "04_CORPUS_AND_DATA_GOVERNANCE.md",
+    "05_RAG_AND_TATTVANET_SPEC.md",
+    "06_ATMAN_LLM_AND_FINETUNING_SPEC.md",
+    "07_NYAYABENCH_EVALUATION_SPEC.md",
+    "08_RUNTIME_ANSWER_POLICY.md",
+    "09_API_AND_MODULE_CONTRACTS.md",
+    "10_INFRA_DEPLOYMENT_AND_SECURITY.md",
+    "11_VERSION_ROADMAP.md",
+    "12_ADR_DECISION_LOG.md",
+    "README.md"
+  ],
+  "canonical_names": {
+    "brand": "Atman",
+    "platform": "AtmanOS",
+    "llm_family": "Atman LLM",
+    "corpus": "ShrutiKosh",
+    "knowledge_layer": "TattvaNet",
+    "runtime": "Atman Acharya",
+    "evaluator": "NyayaBench",
+    "monitor": "Garuda Watch",
+    "admin": "Atman Studio"
+  }
+}

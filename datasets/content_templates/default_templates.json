@@ -1,0 +1,51 @@
+[
+  {
+    "name": "hi_notes_source_grounded_v1",
+    "content_type": "notes",
+    "language": "hi",
+    "prompt_template": "Topic={topic}; difficulty={difficulty}; produce source-grounded Hindi notes with citations.",
+    "output_schema": {
+      "sections": [
+        "summary",
+        "key_points",
+        "source_basis",
+        "revision"
+      ]
+    },
+    "version": "0.4.0",
+    "active": true
+  },
+  {
+    "name": "hi_mcq_source_grounded_v1",
+    "content_type": "mcq",
+    "language": "hi",
+    "prompt_template": "Create Hindi MCQs from provided source chunks. Never invent scripture.",
+    "output_schema": {
+      "fields": [
+        "question",
+        "options",
+        "answer",
+        "explanation",
+        "source_chunk_ids"
+      ]
+    },
+    "version": "0.4.0",
+    "active": true
+  },
+  {
+    "name": "hi_lesson_plan_v1",
+    "content_type": "lesson_plan",
+    "language": "hi",
+    "prompt_template": "Create a teacher-ready Hindi lesson plan from source chunks.",
+    "output_schema": {
+      "sections": [
+        "objectives",
+        "flow",
+        "activity",
+        "assessment"
+      ]
+    },
+    "version": "0.4.0",
+    "active": true
+  }
+]

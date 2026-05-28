@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman Corpus Upload Response",
+  "type": "object",
+  "required": ["source", "source_file", "extraction", "ingestion_report"],
+  "properties": {
+    "source": {"$ref": "source.schema.json"},
+    "source_file": {"$ref": "source_file.schema.json"},
+    "extraction": {"type": "object"},
+    "ingestion_report": {"type": "object"}
+  }
+}

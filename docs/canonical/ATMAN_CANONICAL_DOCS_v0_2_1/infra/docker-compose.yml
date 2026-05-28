@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: atman
+      POSTGRES_PASSWORD: atman_dev
+      POSTGRES_DB: atman
+    ports: ["5432:5432"]
+    volumes:
+      - atman_postgres:/var/lib/postgresql/data
+  redis:
+    image: redis:7
+    ports: ["6379:6379"]
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports: ["6333:6333"]
+    volumes:
+      - atman_qdrant:/qdrant/storage
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: atman
+      MINIO_ROOT_PASSWORD: atman_dev_password
+    ports: ["9000:9000", "9001:9001"]
+    volumes:
+      - atman_minio:/data
+  neo4j:
+    image: neo4j:5
+    environment:
+      NEO4J_AUTH: neo4j/atman_dev_password
+    ports: ["7474:7474", "7687:7687"]
+    volumes:
+      - atman_neo4j:/data
+  api:
+    build:
+      context: ../services/api
+    env_file: .env.example
+    ports: ["8000:8000"]
+    depends_on: [postgres, redis, qdrant, minio]
+  worker:
+    build:
+      context: ../services/workers
+    env_file: .env.example
+    depends_on: [api, redis, postgres]
+volumes:
+  atman_postgres:
+  atman_qdrant:
+  atman_minio:
+  atman_neo4j:

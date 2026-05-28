@@ -1,0 +1,40 @@
+{
+  "artifact": "ATMAN_REPO_v1_0_5_PRODUCTION_CHATBOT_CORPUS_ANALYTICS",
+  "created_at": "2026-05-28T12:24:38.560869+00:00",
+  "base": "ATMAN_REPO_v1_0_1_QWEN_SERVING_AND_CANONICAL_CORPUS_DB",
+  "version": "1.0.5",
+  "consolidates": [
+    "v1.0.2_REMOTE_QWEN_CHATBOT_PRODUCT_APP",
+    "v1.0.3_WIDE_CORPUS_ACQUISITION_AND_SOURCE_CORRECTNESS",
+    "v1.0.4_CONTENT_PUBLISHING_AND_USER_ACCOUNTS",
+    "v1.0.5_PRODUCTION_DEPLOYMENT_BILLING_ANALYTICS"
+  ],
+  "model_mode": "remote_qwen_api_only_default",
+  "model_weights_bundled": false,
+  "default_runtime_mode": "openai_compatible",
+  "features": [
+    "unified Atman App interface",
+    "remote Qwen model gateway",
+    "chat sessions and message history",
+    "chat feedback and admin debug traces",
+    "hidden/source/scholar citation modes",
+    "wide corpus acquisition quarantine jobs",
+    "ShrutiKosh canonical corpus DB",
+    "content publishing channels and publication queue",
+    "account and role scaffold",
+    "model usage token/cost logging",
+    "analytics overview and product readiness",
+    "production deployment runbooks"
+  ],
+  "entrypoints": {
+    "atman_app": "http://localhost:3002",
+    "studio": "http://localhost:3000",
+    "public_app": "http://localhost:3001",
+    "api": "http://localhost:8000/docs"
+  },
+  "verification": {
+    "tests_expected": 62,
+    "python_compile": "required",
+    "zip_integrity": "required"
+  }
+}

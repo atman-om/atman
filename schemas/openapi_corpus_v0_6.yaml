@@ -1,0 +1,26 @@
+openapi: 3.1.0
+info:
+  title: Atman Corpus API
+  version: 0.6.0
+paths:
+  /corpus/upload:
+    post:
+      summary: Upload and ingest a corpus source file
+  /corpus/dashboard:
+    get:
+      summary: Return corpus ingestion/review metrics
+  /corpus/review/sources:
+    get:
+      summary: Return source review queue
+  /corpus/sources/{source_id}/rights:
+    post:
+      summary: Record rights decision for a source
+  /corpus/sources/{source_id}/promote:
+    post:
+      summary: Promote source to Z1/Z2/BLOCKED/DEPRECATED
+  /corpus/review/chunks:
+    get:
+      summary: Return chunk review queue
+  /corpus/chunks/{chunk_id}/review:
+    patch:
+      summary: Record chunk review decision

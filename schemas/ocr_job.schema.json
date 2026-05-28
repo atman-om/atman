@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": [
+    "filename",
+    "status",
+    "engine"
+  ],
+  "properties": {
+    "filename": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "engine": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number"
+    }
+  }
+}

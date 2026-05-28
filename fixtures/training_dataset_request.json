@@ -1,0 +1,11 @@
+{
+  "name": "atman_seed_training",
+  "base_model": "Qwen/Qwen3-14B",
+  "samples": [
+    {
+      "prompt": "कर्म क्या है?",
+      "completion": "स्रोत आधारित उत्तर।",
+      "rights_status": "PUBLIC_DOMAIN_VERIFIED"
+    }
+  ]
+}

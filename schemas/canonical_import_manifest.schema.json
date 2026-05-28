@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CanonicalCorpusImportManifest",
+  "type": "object",
+  "properties": {
+    "works": {
+      "type": "array",
+      "items": {
+        "$ref": "canonical_work.schema.json"
+      }
+    },
+    "passages": {
+      "type": "array",
+      "items": {
+        "$ref": "canonical_passage.schema.json"
+      }
+    },
+    "source_policy": {
+      "type": "object"
+    }
+  }
+}

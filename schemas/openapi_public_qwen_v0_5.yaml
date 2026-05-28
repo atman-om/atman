@@ -1,0 +1,56 @@
+openapi: 3.1.0
+info:
+  title: Atman Public App + Qwen Runtime API
+  version: 0.5.0
+paths:
+  /public/ask:
+    post:
+      summary: Public source-grounded ask endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublicAskRequest'
+      responses:
+        '200':
+          description: Source-grounded answer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicAskResponse'
+  /public/ask/stream:
+    post:
+      summary: SSE public ask stream
+      responses:
+        '200':
+          description: text/event-stream token events
+  /runtime/status:
+    get:
+      summary: Qwen runtime status
+      responses:
+        '200':
+          description: Runtime status
+  /runtime/qwen/chat:
+    post:
+      summary: Internal Qwen chat facade
+components:
+  schemas:
+    PublicAskRequest:
+      type: object
+      required: [question]
+      properties:
+        question: { type: string, minLength: 2, maxLength: 4000 }
+        language: { type: string, default: hi }
+        top_k: { type: integer, minimum: 1, maximum: 10, default: 5 }
+        mode: { type: string, enum: [simple, scholar], default: simple }
+    PublicAskResponse:
+      type: object
+      required: [answer, citations, safety_report, model_name, latency_ms]
+      properties:
+        answer: { type: string }
+        citations: { type: array, items: { type: object } }
+        safety_report: { type: object }
+        model_name: { type: string }
+        latency_ms: { type: integer }
+        ui_hints: { type: object }

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtmanContentReviewDecision",
+  "type": "object",
+  "required": [
+    "decision"
+  ],
+  "properties": {
+    "decision": {
+      "enum": [
+        "APPROVED",
+        "REJECTED",
+        "NEEDS_REVISION",
+        "AUTO_BLOCKED",
+        "REVIEW_PENDING"
+      ]
+    },
+    "reviewer_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "checklist": {
+      "type": "object"
+    }
+  }
+}

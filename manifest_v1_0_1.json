@@ -1,0 +1,20 @@
+{
+  "artifact": "ATMAN_REPO_v1_0_1_QWEN_SERVING_AND_CANONICAL_CORPUS_DB",
+  "created_at": "2026-05-28T11:29:40.288430+00:00",
+  "base": "ATMAN_REPO_v1_0_PRODUCTION_RELEASE",
+  "version": "1.0.1",
+  "adds": [
+    "qwen_serving_profiles",
+    "canonical_corpus_db",
+    "relaxed_ingestion_quarantine",
+    "citation_visibility_modes",
+    "unified_atman_app_interface"
+  ],
+  "model_weights_bundled": false,
+  "entrypoints": {
+    "api": "http://localhost:8000/docs",
+    "studio": "http://localhost:3000",
+    "public": "http://localhost:3001",
+    "atman_app": "http://localhost:3002"
+  }
+}

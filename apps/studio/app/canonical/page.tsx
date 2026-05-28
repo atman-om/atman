@@ -1,0 +1,2 @@
+async function loadData() { const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/canonical/works`, { cache: 'no-store' }); if (!res.ok) return null; return res.json(); }
+export default async function Page() { const data = await loadData(); return <section><h1>Canonical Corpus DB</h1><p>Manage works, passages, locators, and internal evidence.</p><div className="card"><pre>{JSON.stringify(data, null, 2)}</pre></div></section>; }

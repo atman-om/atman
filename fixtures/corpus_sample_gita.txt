@@ -1,0 +1,6 @@
+Bhagavad Gita 2.47
+
+कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।
+मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥
+
+This fixture is for local ingestion pipeline testing only. It should be replaced by rights-reviewed production sources before release.

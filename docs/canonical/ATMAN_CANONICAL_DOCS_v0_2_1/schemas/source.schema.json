@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtmanSource",
+  "type": "object",
+  "required": [
+    "source_id",
+    "title",
+    "source_type",
+    "rights_status",
+    "ingestion_status"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "pdf",
+        "epub",
+        "txt",
+        "url",
+        "web",
+        "manual"
+      ]
+    },
+    "language": {
+      "enum": [
+        "hi",
+        "sa",
+        "en",
+        "mixed"
+      ]
+    },
+    "rights_status": {
+      "type": "string"
+    },
+    "ingestion_status": {
+      "type": "string"
+    },
+    "checksum_sha256": {
+      "type": "string"
+    },
+    "allowed_usage": {
+      "type": "object"
+    }
+  }
+}

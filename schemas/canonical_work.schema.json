@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CanonicalWork",
+  "type": "object",
+  "required": [
+    "work_key",
+    "category"
+  ],
+  "properties": {
+    "work_key": {
+      "type": "string"
+    },
+    "title_sa": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title_hi": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title_en": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "category": {
+      "type": "string"
+    },
+    "tradition_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_level": {
+      "type": "string",
+      "enum": [
+        "PRIMARY",
+        "COMMENTARY",
+        "TRANSLATION",
+        "SECONDARY",
+        "DISCOVERY"
+      ]
+    },
+    "canonical_status": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

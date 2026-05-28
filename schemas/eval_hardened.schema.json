@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman Hardened Eval Case",
+  "type": "object",
+  "required": [
+    "case_id",
+    "category",
+    "question",
+    "severity"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "benchmark_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "question": {
+      "type": "string"
+    },
+    "expected_behavior": {
+      "type": "string"
+    },
+    "required_citations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "blocked_behaviors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "severity": {
+      "enum": [
+        "hard_fail",
+        "soft_fail"
+      ]
+    },
+    "grader_config": {
+      "type": "object"
+    }
+  }
+}

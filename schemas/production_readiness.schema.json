@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": [
+    "ready",
+    "checks"
+  ],
+  "properties": {
+    "ready": {
+      "type": "boolean"
+    },
+    "checks": {
+      "type": "object"
+    },
+    "hard_failures": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+openapi: 3.1.0
+info:
+  title: Atman Platform API
+  version: 0.2.1
+  description: Canonical API surface for ATMAN_REPO_v0_3.
+servers:
+  - url: http://localhost:8000
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: OK
+  /version:
+    get:
+      summary: Version info
+      responses:
+        '200':
+          description: OK
+  /sources:
+    post:
+      summary: Register a source
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceCreateRequest'
+      responses:
+        '200':
+          description: Source registered
+    get:
+      summary: List sources
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Source list
+  /ask:
+    post:
+      summary: Ask Atman with source-grounded RAG
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AskRequest'
+      responses:
+        '200':
+          description: Source-grounded answer
+  /rag/debug:
+    post:
+      summary: Debug retrieval and citations
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: RAG trace
+  /eval/runs:
+    post:
+      summary: Start NyayaBench eval run
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Eval run started
+  /release/gates:
+    post:
+      summary: Create release gate
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Release gate created
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    SourceCreateRequest:
+      type: object
+      required: [title, source_type, language]
+      properties:
+        title: { type: string }
+        source_type: { type: string, enum: [pdf, epub, txt, url, web, manual] }
+        language: { type: string, enum: [hi, sa, en, mixed] }
+        rights_status: { type: string, default: unknown }
+    AskRequest:
+      type: object
+      required: [question]
+      properties:
+        question: { type: string }
+        language: { type: string, default: hi }
+        require_citations: { type: boolean, default: true }
+        mode: { type: string, enum: [simple, detailed, scholar], default: simple }

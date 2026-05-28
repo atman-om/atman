@@ -1,0 +1,33 @@
+:root {
+  --bg: #fffaf2;
+  --fg: #21170f;
+  --muted: #725f4a;
+  --card: #ffffff;
+  --line: #eadcca;
+  --accent: #8a4b16;
+  --accent-soft: #f6e4cf;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+a { color: inherit; text-decoration: none; }
+.shell { max-width: 1120px; margin: 0 auto; padding: 28px 20px 64px; }
+.nav { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 32px; }
+.brand { font-weight: 800; letter-spacing: -0.04em; font-size: 28px; }
+.navlinks { display: flex; gap: 14px; color: var(--muted); font-weight: 600; }
+.hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: stretch; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 28px; box-shadow: 0 24px 80px rgba(80, 45, 15, .08); }
+h1 { font-size: clamp(42px, 7vw, 86px); line-height: .9; margin: 0 0 18px; letter-spacing: -0.08em; }
+h2 { margin: 0 0 14px; font-size: 26px; letter-spacing: -0.04em; }
+p { color: var(--muted); line-height: 1.65; }
+.badge { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 800; margin-bottom: 18px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+textarea, input, select { width: 100%; border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; font: inherit; background: #fffdf9; color: var(--fg); }
+textarea { min-height: 140px; resize: vertical; }
+button { border: 0; border-radius: 18px; background: var(--accent); color: white; padding: 14px 18px; font-weight: 800; cursor: pointer; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+.answer { white-space: pre-wrap; background: #fffdf9; border: 1px dashed var(--line); border-radius: 22px; padding: 20px; line-height: 1.75; }
+.citation { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 14px; color: var(--muted); }
+.footer { margin-top: 44px; color: var(--muted); font-size: 14px; }
+@media (max-width: 860px) { .hero, .grid { grid-template-columns: 1fr; } .nav { align-items: flex-start; flex-direction: column; } }
+
+.row{display:flex;gap:12px;margin:18px 0}.row input{flex:1;padding:12px;border:1px solid #ddd;border-radius:12px}.row button{padding:12px 18px;border:0;border-radius:12px;background:#111;color:white}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.mini-card{display:block;border:1px solid #e7e2d8;border-radius:16px;padding:14px;margin:10px 0;text-decoration:none;color:inherit;background:#fffaf0}.mini-card span{display:block;color:#776b5c;font-size:13px;margin-top:6px}pre{white-space:pre-wrap;overflow:auto}

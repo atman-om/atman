@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "url",
+    "rights_status"
+  ],
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "rights_status": {
+      "type": "string"
+    },
+    "fetch_now": {
+      "type": "boolean"
+    }
+  }
+}

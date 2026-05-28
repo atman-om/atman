@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atman Chunk Review Decision",
+  "type": "object",
+  "required": ["decision"],
+  "properties": {
+    "decision": {"enum": ["approve", "reject", "needs_revision", "revise", "deprecate"]},
+    "reviewer_id": {"type": ["string", "null"]},
+    "revised_text": {"type": ["string", "null"]},
+    "quality_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "checklist": {"type": "object"},
+    "notes": {"type": ["string", "null"]}
+  }
+}

@@ -1,0 +1,24 @@
+openapi: 3.1.0
+info:
+  title: Atman Content Factory API
+  version: 0.4.0
+paths:
+  /content/batches:
+    post:
+      summary: Create content batch
+    get:
+      summary: List content batches
+  /content/batches/{batch_id}/run:
+    post:
+      summary: Run content batch synchronously
+  /content/items:
+    get:
+      summary: List generated content items
+  /content/items/{item_id}/review:
+    post:
+      summary: Create human review decision
+  /content/exports:
+    post:
+      summary: Export reviewed content
+    get:
+      summary: List exports

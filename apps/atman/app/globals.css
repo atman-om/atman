@@ -1,0 +1,15 @@
+body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #100c08; color: #f8efe2; }
+.shell { max-width: 1180px; margin: 0 auto; padding: 30px; }
+.nav { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+.nav a { color: #ffd28a; text-decoration: none; font-weight: 800; padding: 8px 10px; border: 1px solid #5d4322; border-radius: 999px; }
+.hero { border: 1px solid #5d4322; border-radius: 28px; padding: 28px; background: linear-gradient(135deg, #23170a, #15100c); box-shadow: 0 18px 60px rgba(0,0,0,.28); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 18px; }
+.card { background: #18110b; border: 1px solid #4b3218; border-radius: 20px; padding: 18px; }
+.badge { display: inline-block; font-size: 12px; color: #140c04; background: #ffc46b; padding: 5px 9px; border-radius: 999px; font-weight: 900; }
+pre { background: #070503; color: #f8efe2; padding: 14px; border-radius: 14px; overflow-x: auto; white-space: pre-wrap; }
+input, select, textarea { width: min(100%, 620px); padding: 10px; border-radius: 12px; border: 1px solid #6a4c28; background: #0b0805; color: #fff7eb; }
+button { padding: 10px 14px; border: 0; border-radius: 12px; background: #ffc46b; color: #140c04; font-weight: 900; }
+
+.bubble { border-top: 1px solid #4b3218; padding: 12px 0; }
+code { color: #ffd28a; }
+textarea { margin-top: 12px; }

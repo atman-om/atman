@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtmanChunk",
+  "type": "object",
+  "required": [
+    "chunk_id",
+    "source_id",
+    "chunk_text",
+    "citation_locator"
+  ],
+  "properties": {
+    "chunk_id": {
+      "type": "string"
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "chunk_text": {
+      "type": "string"
+    },
+    "token_count": {
+      "type": "integer"
+    },
+    "chunk_order": {
+      "type": "integer"
+    },
+    "citation_locator": {
+      "type": "object"
+    },
+    "review_status": {
+      "type": "string"
+    }
+  }
+}
