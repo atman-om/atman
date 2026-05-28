@@ -1,5 +1,5 @@
 "$schema" = "./node_modules/wrangler/config-schema.json"
-name = "swabodh"
+name = "swabodh-atman"
 main = ".open-next/worker.js"
 compatibility_date = "2026-05-28"
 compatibility_flags = ["nodejs_compat"]
@@ -13,5 +13,5 @@ binding = "ASSETS"
 enabled = true
 
 [[routes]]
-pattern = "swabodh.in"
+pattern = "atman.swabodh.in"
 custom_domain = true

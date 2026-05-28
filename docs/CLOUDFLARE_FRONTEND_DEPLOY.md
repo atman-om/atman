@@ -4,8 +4,8 @@ Atman's unified frontend is a dynamic Next.js app. Deploy it to Cloudflare Worke
 
 ## App
 
-- Worker name: `swabodh`
-- Domain: `swabodh.in`
+- Worker name: `swabodh-atman`
+- Domain: `atman.swabodh.in`
 - App directory: `apps/atman`
 - Config: `apps/atman/wrangler.toml`
 
@@ -29,10 +29,12 @@ npm.cmd run preview:cloudflare
 npm.cmd run deploy:cloudflare
 ```
 
-`preview:cloudflare` runs the app in the Cloudflare Worker runtime locally. `deploy:cloudflare` builds and deploys the Worker, then attaches the `swabodh.in` custom domain if the Cloudflare zone is available on the logged-in account.
+`preview:cloudflare` runs the app in the Cloudflare Worker runtime locally. `deploy:cloudflare` builds and deploys the Worker, then attaches the `atman.swabodh.in` custom domain if the Cloudflare zone is available on the logged-in account.
 
 ## Cloudflare notes
 
 - `swabodh.in` must be an active Cloudflare zone.
+- Keep root `swabodh.in` free for the public website.
+- The public website's Atman tab should link to `https://atman.swabodh.in`.
 - The custom domain cannot already have a conflicting CNAME record.
-- `www.swabodh.in` is not covered by the root-domain custom domain. Add a second custom domain or a Cloudflare redirect rule if `www` should work.
+- `www.swabodh.in` is not covered by this Atman console config. Use it for the public website or a website redirect.
