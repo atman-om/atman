@@ -64,7 +64,7 @@ def run_migrations_online() -> None:
     configuration = config.get_section(config.config_ini_section) or {}
     configuration["sqlalchemy.url"] = get_url()
     connectable = engine_from_config(configuration, prefix="sqlalchemy.", poolclass=pool.NullPool)
-    with connectable.connect() as connection:
+    with connectable.begin() as connection:
         if connection.dialect.name == "postgresql" and inspect(connection).has_table("alembic_version"):
             connection.execute(text("ALTER TABLE alembic_version ALTER COLUMN version_num TYPE VARCHAR(255)"))
         context.configure(connection=connection, target_metadata=target_metadata)
