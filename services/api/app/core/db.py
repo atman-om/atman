@@ -9,7 +9,12 @@ class Base(DeclarativeBase):
 
 
 settings = get_settings()
-engine = create_async_engine(settings.database_url, pool_pre_ping=True, future=True)
+engine = create_async_engine(
+    settings.sqlalchemy_database_url,
+    pool_pre_ping=True,
+    future=True,
+    connect_args=settings.database_connect_args,
+)
 AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
 
 

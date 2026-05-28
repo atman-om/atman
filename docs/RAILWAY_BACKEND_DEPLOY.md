@@ -23,7 +23,9 @@ ATMAN_QWEN_BASE_URL=<Qwen OpenAI-compatible base URL>
 ATMAN_QWEN_API_KEY=<Qwen API key>
 ```
 
-Use the exact variable names already present in `.env.example`.
+Use the exact variable names already present in `.env.example`. A standard Neon pooled URL like `postgresql://...-pooler.../neondb?sslmode=require&channel_binding=require` is accepted for `ATMAN_DATABASE_URL`; the API converts it to the async SQLAlchemy driver format at runtime.
+
+`ATMAN_SYNC_DATABASE_URL` is optional for Railway. If it is not set, migrations derive the sync driver URL from `ATMAN_DATABASE_URL`.
 
 ## If Railway does not auto-deploy
 
@@ -36,3 +38,5 @@ Check these in the Railway service settings:
 5. GitHub auto-deploys are enabled.
 
 The API container binds to Railway's injected `PORT`, with local fallback to `8000`.
+
+Railway runs `alembic upgrade head` before starting the API, so the Neon schema is migrated during deployment.

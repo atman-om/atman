@@ -1,6 +1,42 @@
 from functools import lru_cache
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+DEFAULT_ASYNC_DATABASE_URL = "sqlite+aiosqlite:///./atman.db"
+DEFAULT_SYNC_DATABASE_URL = "sqlite:///./atman.db"
+
+
+def _replace_scheme(url: str, scheme: str) -> str:
+    parsed = urlsplit(url)
+    return urlunsplit((scheme, parsed.netloc, parsed.path, parsed.query, parsed.fragment))
+
+
+def _strip_query_keys(url: str, keys: set[str]) -> str:
+    parsed = urlsplit(url)
+    query = urlencode(
+        [(key, value) for key, value in parse_qsl(parsed.query, keep_blank_values=True) if key not in keys]
+    )
+    return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, query, parsed.fragment))
+
+
+def _postgres_scheme(url: str, driver: str) -> str:
+    if url.startswith(("postgresql://", "postgres://")):
+        return _replace_scheme(url, f"postgresql+{driver}")
+    if url.startswith("postgresql+"):
+        return _replace_scheme(url, f"postgresql+{driver}")
+    return url
+
+
+def _ssl_required(url: str) -> bool:
+    parsed = urlsplit(url)
+    query = dict(parse_qsl(parsed.query))
+    sslmode = query.get("sslmode")
+    if sslmode:
+        return sslmode != "disable"
+    return "neon.tech" in parsed.hostname if parsed.hostname else False
 
 
 class Settings(BaseSettings):
@@ -10,8 +46,8 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     api_host: str = "0.0.0.0"
     api_port: int = 8000
-    database_url: str = "sqlite+aiosqlite:///./atman.db"
-    sync_database_url: str = "sqlite:///./atman.db"
+    database_url: str = DEFAULT_ASYNC_DATABASE_URL
+    sync_database_url: str = DEFAULT_SYNC_DATABASE_URL
     redis_url: str = "redis://localhost:6379/0"
     qdrant_url: str = "http://localhost:6333"
     qdrant_collection: str = "atman_chunks"
@@ -164,6 +200,26 @@ class Settings(BaseSettings):
     @property
     def resolved_qwen_api_key(self) -> str | None:
         return self.qwen_api_key or self.llm_api_key
+
+    @property
+    def sqlalchemy_database_url(self) -> str:
+        url = _postgres_scheme(self.database_url, "asyncpg")
+        if url.startswith("postgresql+asyncpg://"):
+            return _strip_query_keys(url, {"sslmode", "channel_binding"})
+        return url
+
+    @property
+    def sqlalchemy_sync_database_url(self) -> str:
+        source_url = self.sync_database_url
+        if source_url == DEFAULT_SYNC_DATABASE_URL and self.database_url != DEFAULT_ASYNC_DATABASE_URL:
+            source_url = self.database_url
+        return _postgres_scheme(source_url, "psycopg")
+
+    @property
+    def database_connect_args(self) -> dict[str, bool]:
+        if self.sqlalchemy_database_url.startswith("postgresql+asyncpg://") and _ssl_required(self.database_url):
+            return {"ssl": True}
+        return {}
 
 
 @lru_cache(maxsize=1)
