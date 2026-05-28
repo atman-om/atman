@@ -21,6 +21,7 @@ from services.api.app.services.canonical_corpus import (
     text_hash,
     zone_transition_allowed,
 )
+from services.api.app.services.demo_canonical_seed import seed_demo_canonical
 
 router = APIRouter(prefix="/canonical", tags=["canonical-corpus-v1.0.1"])
 
@@ -270,6 +271,11 @@ async def import_manifest(manifest: dict[str, Any], session: AsyncSession = Depe
         imported_passages += 1
     await session.commit()
     return {"imported": {"works": len(work_key_to_id), "passages": imported_passages}, "manifest_counts": counts}
+
+
+@router.post("/seed/demo")
+async def seed_demo(session: AsyncSession = Depends(get_session)) -> dict[str, Any]:
+    return await seed_demo_canonical(session)
 
 
 @router.post("/claims/check", response_model=ClaimCheckResponse)

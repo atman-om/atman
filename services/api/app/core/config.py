@@ -56,7 +56,7 @@ class Settings(BaseSettings):
     object_store_access_key: str = "atman"
     object_store_secret_key: str = "atman-secret"
     jwt_secret: str = "change-me-in-production"
-    cors_origins: str = "http://localhost:3000,http://localhost:3001,http://localhost:3002"
+    cors_origins: str = "http://localhost:3000,http://localhost:3001,http://localhost:3002,http://127.0.0.1:3000,http://127.0.0.1:3001,http://127.0.0.1:3002"
 
     # Canonical model lock: Qwen working family; Atman-Prod remains release-gated.
     model_family: str = "Qwen"
