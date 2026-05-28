@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  api-tests:
+    name: API tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install API dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Run tests
+        run: python -m pytest -q -p no:cacheprovider
+
+  atman-console-build:
+    name: Atman console build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/atman
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/atman/package-lock.json
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build Atman console
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+        run: npm run build
