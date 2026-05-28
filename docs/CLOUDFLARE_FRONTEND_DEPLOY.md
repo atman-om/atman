@@ -31,6 +31,29 @@ npm.cmd run deploy:cloudflare
 
 `preview:cloudflare` runs the app in the Cloudflare Worker runtime locally. `deploy:cloudflare` builds and deploys the Worker, then attaches the `atman.swabodh.in` custom domain if the Cloudflare zone is available on the logged-in account.
 
+## Cloudflare Git build settings
+
+Use a Workers deployment, not a Dockerfile deployment and not a static Pages export.
+
+```text
+Root directory: apps/atman
+Install command: npm ci
+Build command: npm run cf:build
+Deploy command: npm run cf:deploy
+Pre-deploy command: empty
+Build system: npm / Node.js, not Dockerfile
+```
+
+If the Cloudflare dashboard shows `apps/atman/Dockerfile`, remove that Dockerfile setting. The Dockerfile is only for local `docker compose` development; it starts `next dev` and does not produce a Cloudflare Worker bundle.
+
+Set this Cloudflare variable:
+
+```text
+NEXT_PUBLIC_API_BASE_URL=https://api.swabodh.in
+```
+
+If Railway gives a different public API URL, use that value until `api.swabodh.in` is ready.
+
 ## Cloudflare notes
 
 - `swabodh.in` must be an active Cloudflare zone.

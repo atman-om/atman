@@ -3,6 +3,9 @@
     "dev": "next dev -H 0.0.0.0 -p 3002",
     "build": "next build",
     "start": "next start -H 0.0.0.0 -p 3002",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:deploy": "opennextjs-cloudflare deploy",
+    "cf:upload": "opennextjs-cloudflare upload",
     "preview:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
