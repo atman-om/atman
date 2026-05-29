@@ -29,6 +29,14 @@ def recommended_profiles(settings: Settings) -> list[QwenServingProfile]:
             notes=["No model weights required", "For API/UI smoke tests only", "Not a real LLM"],
         ),
         QwenServingProfile(
+            name="gemini-api",
+            mode="gemini",
+            model_id=settings.gemini_model_id,
+            command="ATMAN_QWEN_RUNTIME_MODE=gemini ATMAN_GEMINI_API_KEY=... uvicorn services.api.app.main:app",
+            endpoint=settings.gemini_base_url.rstrip("/") + "/chat/completions",
+            notes=["Fast path for production chat", "Uses Gemini OpenAI-compatible endpoint", "No Qwen weights required"],
+        ),
+        QwenServingProfile(
             name="vllm-qwen14b",
             mode="openai_compatible",
             model_id=settings.qwen_model_id,
@@ -71,8 +79,12 @@ def serving_env(settings: Settings) -> dict[str, Any]:
         "serving_profile": settings.qwen_serving_profile,
         "model_id": settings.qwen_model_id,
         "small_model_id": settings.qwen_small_model_id,
+        "gemini_model_id": settings.gemini_model_id,
+        "gemini_base_url": settings.gemini_base_url,
+        "gemini_api_key_configured": bool(settings.resolved_gemini_api_key),
         "ollama_model": settings.qwen_ollama_model,
         "base_url": settings.resolved_qwen_base_url,
+        "api_key_configured": bool(settings.resolved_qwen_api_key),
         "model_cache_dir": settings.qwen_model_cache_dir,
         "gpu_required": settings.qwen_gpu_required,
     }

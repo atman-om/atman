@@ -59,11 +59,25 @@ async def product_readiness(session: AsyncSession = Depends(get_session)) -> Pro
     sessions = await scalar_count(session, ChatSession)
     blockers: list[str] = []
     warnings: list[str] = []
-    if not settings.resolved_qwen_base_url:
+    mode = settings.qwen_runtime_mode.strip().lower()
+    if mode == "gemini":
+        if not settings.gemini_base_url:
+            blockers.append("gemini_base_url_not_configured")
+        if not settings.resolved_gemini_api_key:
+            blockers.append("gemini_api_key_not_configured")
+    elif not settings.resolved_qwen_base_url:
         blockers.append("remote_qwen_base_url_not_configured")
-    if not settings.resolved_qwen_api_key:
+    if mode != "gemini" and not settings.resolved_qwen_api_key:
         warnings.append("remote_qwen_api_key_not_configured")
     if works == 0 or passages == 0:
         warnings.append("canonical_corpus_seed_missing")
-    checks = {"remote_qwen_mode": settings.qwen_runtime_mode, "users": users, "canonical_works": works, "canonical_passages": passages, "chat_sessions": sessions}
+    checks = {
+        "remote_qwen_mode": settings.qwen_runtime_mode,
+        "provider": "gemini_api" if mode == "gemini" else settings.remote_qwen_default_provider,
+        "model_id": settings.gemini_model_id if mode == "gemini" else settings.qwen_model_id,
+        "users": users,
+        "canonical_works": works,
+        "canonical_passages": passages,
+        "chat_sessions": sessions,
+    }
     return ProductReadinessOut(version=settings.product_version, ready_for_demo=len(blockers) == 0, ready_for_public_beta=len(blockers) == 0 and works > 0 and passages > 0, checks=checks, blockers=blockers, warnings=warnings)

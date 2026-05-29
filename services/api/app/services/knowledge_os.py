@@ -23,15 +23,18 @@ def capability_map(settings: Settings) -> dict[str, Any]:
 def status(settings: Settings) -> dict[str, Any]:
     blockers: list[str] = []
     warnings: list[str] = []
-    if settings.qwen_runtime_mode == "openai_compatible" and not settings.resolved_qwen_base_url:
+    mode = settings.qwen_runtime_mode.strip().lower()
+    if mode == "openai_compatible" and not settings.resolved_qwen_base_url:
         warnings.append("remote_qwen_base_url_missing")
+    if mode == "gemini" and not settings.resolved_gemini_api_key:
+        warnings.append("gemini_api_key_missing")
     if settings.enable_model_lab and settings.training_allow_real_jobs:
         warnings.append("real_training_jobs_enabled_check_gpu_and_dataset_governance")
     return {
         "version": settings.product_version,
         "codename": settings.product_codename,
         "primary_runtime": settings.qwen_runtime_mode,
-        "live_brain": "remote_qwen_api" if settings.qwen_runtime_mode == "openai_compatible" else settings.qwen_runtime_mode,
+        "live_brain": "gemini_api" if mode == "gemini" else ("remote_qwen_api" if mode == "openai_compatible" else settings.qwen_runtime_mode),
         "parallel_model_lab": settings.enable_model_lab,
         "launch_surfaces": launch_surfaces(settings),
         "capability_map": capability_map(settings),

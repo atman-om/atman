@@ -7,6 +7,9 @@ from services.api.app.core.config import Settings
 
 
 def production_readiness(settings: Settings) -> dict[str, Any]:
+    mode = settings.qwen_runtime_mode.strip().lower()
+    gemini_configured = bool(settings.gemini_base_url and settings.resolved_gemini_api_key)
+    remote_llm_configured = gemini_configured if mode == "gemini" else bool(settings.resolved_qwen_base_url)
     checks: dict[str, Any] = {
         "database_url_configured": bool(settings.database_url),
         "qdrant_url_configured": bool(settings.qdrant_url),
@@ -15,6 +18,8 @@ def production_readiness(settings: Settings) -> dict[str, Any]:
         "jwt_secret_changed": settings.jwt_secret != "change-me-in-production",
         "qwen_runtime_mode": settings.qwen_runtime_mode,
         "qwen_base_url_configured": bool(settings.resolved_qwen_base_url),
+        "gemini_configured": gemini_configured,
+        "remote_llm_configured": remote_llm_configured,
         "network_crawl_enabled": settings.enable_network_crawl,
         "production_auth_required": settings.production_require_auth,
     }
@@ -22,13 +27,13 @@ def production_readiness(settings: Settings) -> dict[str, Any]:
     warnings: list[str] = []
     if settings.production_mode and not checks["jwt_secret_changed"]:
         hard_failures.append("jwt_secret_default")
-    if settings.production_mode and settings.readiness_require_qwen_when_production and not checks["qwen_base_url_configured"]:
+    if settings.production_mode and settings.readiness_require_qwen_when_production and not checks["remote_llm_configured"]:
         hard_failures.append("qwen_runtime_not_configured")
     if settings.production_mode and not settings.production_require_auth:
         hard_failures.append("production_auth_disabled")
-    if settings.production_mode and settings.qwen_runtime_mode == "deterministic":
+    if settings.production_mode and mode == "deterministic":
         hard_failures.append("deterministic_runtime_in_production")
-    if settings.qwen_runtime_mode == "deterministic":
+    if mode == "deterministic":
         warnings.append("deterministic_runtime_active; suitable for scaffold/testing, not final AI quality")
     return {
         "ready": not hard_failures,

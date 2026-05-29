@@ -1,3 +1,4 @@
+import os
 from functools import lru_cache
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
@@ -79,6 +80,12 @@ class Settings(BaseSettings):
     qwen_max_tokens: int = Field(default=900, ge=64, le=8192)
     qwen_request_timeout_seconds: float = Field(default=60.0, ge=5.0, le=600.0)
     qwen_enable_transformers_runtime: bool = False
+
+    # Fast-path Gemini support. It uses Gemini's OpenAI-compatible chat-completions surface
+    # so the existing Atman chat/RAG flow can stay unchanged.
+    gemini_api_key: str | None = None
+    gemini_base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai"
+    gemini_model_id: str = "gemini-2.5-flash"
 
     # Legacy aliases retained for v0.4 compatibility.
     llm_base_url: str | None = None
@@ -200,6 +207,10 @@ class Settings(BaseSettings):
     @property
     def resolved_qwen_api_key(self) -> str | None:
         return self.qwen_api_key or self.llm_api_key
+
+    @property
+    def resolved_gemini_api_key(self) -> str | None:
+        return self.gemini_api_key or os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
 
     @property
     def sqlalchemy_database_url(self) -> str:

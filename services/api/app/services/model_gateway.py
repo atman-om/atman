@@ -35,25 +35,36 @@ class ModelRoute:
     reason: str
 
 
+def _active_provider(settings: Settings) -> str:
+    return "gemini_api" if settings.qwen_runtime_mode.strip().lower() == "gemini" else settings.remote_qwen_default_provider
+
+
+def _active_model_id(settings: Settings, *, small: bool = False) -> str:
+    if settings.qwen_runtime_mode.strip().lower() == "gemini":
+        return settings.gemini_model_id
+    return settings.qwen_small_model_id if small else settings.qwen_model_id
+
+
 def select_model_route(settings: Settings, feature: str) -> ModelRoute:
     feature_key = feature.lower().strip()
     if feature_key in {"chat", "ask", "rag"}:
-        return ModelRoute(feature, settings.remote_qwen_default_provider, settings.qwen_model_id, settings.qwen_runtime_mode, "primary_chat_runtime")
+        return ModelRoute(feature, _active_provider(settings), _active_model_id(settings), settings.qwen_runtime_mode, "primary_chat_runtime")
     if feature_key in {"content", "publishing"}:
-        return ModelRoute(feature, settings.remote_qwen_default_provider, settings.qwen_model_id, settings.qwen_runtime_mode, "content_generation_runtime")
+        return ModelRoute(feature, _active_provider(settings), _active_model_id(settings), settings.qwen_runtime_mode, "content_generation_runtime")
     if feature_key in {"verify", "eval", "claim_check"}:
-        return ModelRoute(feature, settings.remote_qwen_default_provider, settings.qwen_small_model_id, settings.qwen_runtime_mode, "verifier_runtime")
-    return ModelRoute(feature, settings.remote_qwen_default_provider, settings.qwen_model_id, settings.qwen_runtime_mode, "default_route")
+        return ModelRoute(feature, _active_provider(settings), _active_model_id(settings, small=True), settings.qwen_runtime_mode, "verifier_runtime")
+    return ModelRoute(feature, _active_provider(settings), _active_model_id(settings), settings.qwen_runtime_mode, "default_route")
 
 
 async def remote_provider_status(settings: Settings) -> dict[str, Any]:
     health = await QwenRuntime(settings).health()
+    gemini_mode = settings.qwen_runtime_mode.strip().lower() == "gemini"
     return {
-        "provider": settings.remote_qwen_default_provider,
-        "model_id": settings.qwen_model_id,
+        "provider": _active_provider(settings),
+        "model_id": _active_model_id(settings),
         "mode": settings.qwen_runtime_mode,
-        "base_url_configured": bool(settings.resolved_qwen_base_url),
-        "api_key_configured": bool(settings.resolved_qwen_api_key),
+        "base_url_configured": bool(settings.gemini_base_url if gemini_mode else settings.resolved_qwen_base_url),
+        "api_key_configured": bool(settings.resolved_gemini_api_key if gemini_mode else settings.resolved_qwen_api_key),
         "ready": bool(health.get("ready")),
         "default_for": ["chat", "rag", "content", "source_check"],
         "health": health,

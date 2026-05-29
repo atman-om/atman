@@ -56,11 +56,12 @@ def readiness(counts: dict[str, int], settings: Settings) -> dict[str, Any]:
         warnings.append("insufficient_verified_training_signal")
     if failure_cases < settings.model_lab_min_rejected_samples:
         warnings.append("insufficient_failure_corrections")
+    mode = settings.qwen_runtime_mode.strip().lower()
     score_parts = [
         min(1.0, counts.get("canonical_passages", 0) / max(settings.model_lab_min_verified_samples, 1)),
         min(1.0, counts.get("content_items", 0) / 100),
         min(1.0, max(failure_cases, counts.get("chat_feedback", 0)) / max(settings.model_lab_min_rejected_samples, 1)),
-        1.0 if settings.qwen_runtime_mode == "openai_compatible" else 0.7,
+        1.0 if mode in {"openai_compatible", "gemini"} else 0.7,
     ]
     score = round(sum(score_parts) / len(score_parts), 4)
     next_actions = []
@@ -71,7 +72,7 @@ def readiness(counts: dict[str, int], settings: Settings) -> dict[str, Any]:
     next_actions.append("run simulated LoRA plan before enabling real GPU job")
     return {
         "mode": settings.model_lab_mode,
-        "live_app_runtime": "remote_qwen_api",
+        "live_app_runtime": "gemini_api" if mode == "gemini" else "remote_qwen_api",
         "fine_tuning_lane": "parallel_r_and_d",
         "production_replacement_allowed": False,
         "counts": counts,

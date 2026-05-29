@@ -27,6 +27,18 @@ Use the exact variable names already present in `.env.example`. A standard Neon 
 
 `ATMAN_SYNC_DATABASE_URL` is optional for Railway. If it is not set, migrations derive the sync driver URL from `ATMAN_DATABASE_URL`.
 
+## Gemini fast path
+
+If Qwen serving is not ready yet, keep the same chat endpoints and set Gemini as the runtime:
+
+```text
+ATMAN_QWEN_RUNTIME_MODE=gemini
+ATMAN_GEMINI_API_KEY=<Gemini API key>
+ATMAN_GEMINI_MODEL_ID=gemini-2.5-flash
+```
+
+`ATMAN_GEMINI_BASE_URL` can stay unset unless you need to override Google's OpenAI-compatible endpoint. The default is `https://generativelanguage.googleapis.com/v1beta/openai`.
+
 ## If Railway does not auto-deploy
 
 Check these in the Railway service settings:

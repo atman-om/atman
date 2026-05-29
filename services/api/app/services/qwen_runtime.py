@@ -47,7 +47,7 @@ class QwenRuntime:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
         self.mode = settings.qwen_runtime_mode.strip().lower()
-        self.model_id = settings.qwen_model_id
+        self.model_id = settings.gemini_model_id if self.mode == "gemini" else settings.qwen_model_id
         self.public_name = settings.runtime_model
 
     async def health(self) -> dict[str, Any]:
@@ -57,13 +57,19 @@ class QwenRuntime:
             "qwen_model_id": self.model_id,
             "mode": self.mode,
             "ready": True,
-            "network_required": self.mode in {"openai_compatible", "transformers"},
+            "network_required": self.mode in {"openai_compatible", "gemini", "transformers"},
             "weights_bundled": False,
         }
         if self.mode == "openai_compatible":
             payload["base_url_configured"] = bool(self.settings.resolved_qwen_base_url)
             payload["api_key_configured"] = bool(self.settings.resolved_qwen_api_key)
             payload["ready"] = bool(self.settings.resolved_qwen_base_url)
+        if self.mode == "gemini":
+            payload["provider"] = "gemini_openai_compatible"
+            payload["gemini_model_id"] = self.settings.gemini_model_id
+            payload["base_url_configured"] = bool(self.settings.gemini_base_url)
+            payload["api_key_configured"] = bool(self.settings.resolved_gemini_api_key)
+            payload["ready"] = bool(self.settings.gemini_base_url and self.settings.resolved_gemini_api_key)
         if self.mode == "transformers":
             payload["enabled"] = self.settings.qwen_enable_transformers_runtime
             payload["ready"] = self.settings.qwen_enable_transformers_runtime
@@ -81,12 +87,32 @@ class QwenRuntime:
         warnings: list[str] = []
         try:
             if self.mode == "openai_compatible":
-                text, usage = await self._generate_openai_compatible(
+                text, usage = await self._generate_chat_completions(
                     normalized,
                     temperature=self.settings.qwen_temperature if temperature is None else temperature,
                     max_tokens=self.settings.qwen_max_tokens if max_tokens is None else max_tokens,
+                    base_url=self.settings.resolved_qwen_base_url,
+                    api_key=self.settings.resolved_qwen_api_key,
+                    model_id=self.settings.qwen_model_id,
+                    missing_base_url_error="ATMAN_QWEN_BASE_URL or ATMAN_LLM_BASE_URL is required",
+                    empty_choices_error="OpenAI-compatible Qwen server returned no choices",
+                    empty_text_error="OpenAI-compatible Qwen server returned empty text",
                 )
                 provider = "qwen_openai_compatible"
+            elif self.mode == "gemini":
+                text, usage = await self._generate_chat_completions(
+                    normalized,
+                    temperature=self.settings.qwen_temperature if temperature is None else temperature,
+                    max_tokens=self.settings.qwen_max_tokens if max_tokens is None else max_tokens,
+                    base_url=self.settings.gemini_base_url,
+                    api_key=self.settings.resolved_gemini_api_key,
+                    model_id=self.settings.gemini_model_id,
+                    missing_base_url_error="ATMAN_GEMINI_BASE_URL is required",
+                    missing_api_key_error="ATMAN_GEMINI_API_KEY, GEMINI_API_KEY, or GOOGLE_API_KEY is required",
+                    empty_choices_error="Gemini OpenAI-compatible endpoint returned no choices",
+                    empty_text_error="Gemini OpenAI-compatible endpoint returned empty text",
+                )
+                provider = "gemini_openai_compatible"
             elif self.mode == "transformers":
                 text, usage = await self._generate_transformers(
                     normalized,
@@ -105,7 +131,7 @@ class QwenRuntime:
         latency_ms = int((perf_counter() - started) * 1000)
         return QwenGenerationResult(
             text=text,
-            model_name=self.settings.runtime_model,
+            model_name=self.model_id if self.mode == "gemini" else self.settings.runtime_model,
             provider=provider,
             latency_ms=latency_ms,
             usage=usage,
@@ -125,24 +151,32 @@ class QwenRuntime:
             yield token
             await asyncio.sleep(0)
 
-    async def _generate_openai_compatible(
+    async def _generate_chat_completions(
         self,
         messages: list[dict[str, str]],
         *,
         temperature: float,
         max_tokens: int,
+        base_url: str | None,
+        api_key: str | None,
+        model_id: str,
+        missing_base_url_error: str,
+        empty_choices_error: str,
+        empty_text_error: str,
+        missing_api_key_error: str | None = None,
     ) -> tuple[str, dict[str, Any]]:
-        base_url = self.settings.resolved_qwen_base_url
         if not base_url:
-            raise QwenRuntimeError("ATMAN_QWEN_BASE_URL or ATMAN_LLM_BASE_URL is required")
+            raise QwenRuntimeError(missing_base_url_error)
+        if missing_api_key_error and not api_key:
+            raise QwenRuntimeError(missing_api_key_error)
         url = base_url.rstrip("/")
         if not url.endswith("/v1/chat/completions"):
-            url = f"{url}/v1/chat/completions"
+            url = f"{url}/chat/completions" if url.endswith("/openai") else f"{url}/v1/chat/completions"
         headers = {"Content-Type": "application/json"}
-        if self.settings.resolved_qwen_api_key:
-            headers["Authorization"] = f"Bearer {self.settings.resolved_qwen_api_key}"
+        if api_key:
+            headers["Authorization"] = f"Bearer {api_key}"
         payload = {
-            "model": self.model_id,
+            "model": model_id,
             "messages": messages,
             "temperature": temperature,
             "max_tokens": max_tokens,
@@ -155,11 +189,11 @@ class QwenRuntime:
             data = response.json()
         choices = data.get("choices") or []
         if not choices:
-            raise QwenRuntimeError("OpenAI-compatible Qwen server returned no choices")
+            raise QwenRuntimeError(empty_choices_error)
         message = choices[0].get("message") or {}
         content = message.get("content") or choices[0].get("text") or ""
         if not isinstance(content, str) or not content.strip():
-            raise QwenRuntimeError("OpenAI-compatible Qwen server returned empty text")
+            raise QwenRuntimeError(empty_text_error)
         usage = data.get("usage") if isinstance(data.get("usage"), dict) else {}
         return content.strip(), usage
 

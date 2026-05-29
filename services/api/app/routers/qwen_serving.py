@@ -26,10 +26,17 @@ async def profiles() -> list[dict[str, Any]]:
 async def status() -> dict[str, Any]:
     settings = get_settings()
     health = None
-    if settings.qwen_runtime_mode == "openai_compatible":
+    mode = settings.qwen_runtime_mode.strip().lower()
+    if mode == "openai_compatible":
         health = await check_openai_compatible_health(
             settings.resolved_qwen_base_url,
             settings.resolved_qwen_api_key,
+            settings.qwen_request_timeout_seconds,
+        )
+    elif mode == "gemini":
+        health = await check_openai_compatible_health(
+            settings.gemini_base_url,
+            settings.resolved_gemini_api_key,
             settings.qwen_request_timeout_seconds,
         )
     return {
@@ -47,7 +54,8 @@ async def smoke_test(payload: SmokeRequest) -> dict[str, Any]:
     result = await runtime.generate(messages=[{"role": "user", "content": payload.prompt}])
     return {
         "mode": settings.qwen_runtime_mode,
-        "model_id": settings.qwen_model_id,
+        "model_id": result.model_name,
+        "provider": result.provider,
         "response": result.text,
         "usage": result.usage,
         "warnings": result.warnings,
